@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dchn0obba5lso"]
+[gd_scene load_steps=6 format=3 uid="uid://dchn0obba5lso"]
 
 [ext_resource type="Script" uid="uid://c0l47omebarv5" path="res://scripts/player.gd" id="1_8or6t"]
 
@@ -7,6 +7,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8or6t"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_unwft"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8or6t"]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -21,3 +23,13 @@ mesh = SubResource("CapsuleMesh_8or6t")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.065, 0.559028, -0.46387875)
 mesh = SubResource("BoxMesh_unwft")
+
+[node name="Mao" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.547284, 0.105377674, -0.47380355)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mao"]
+mesh = SubResource("BoxMesh_8or6t")
+
+[node name="RayCast3D" type="RayCast3D" parent="Mao"]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, -0.17296338)
+target_position = Vector3(0, 0, -1)

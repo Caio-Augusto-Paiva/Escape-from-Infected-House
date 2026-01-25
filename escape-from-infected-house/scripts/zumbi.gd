@@ -6,7 +6,7 @@ var gravidade = 9.8
 @onready var agente_nav = $NavigationAgent3D
 
 var player = null
-
+var vida = 100
 func _ready():
 
 	player = get_tree().root.find_child("Player", true, false)
@@ -34,3 +34,17 @@ func _physics_process(delta):
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		
 	move_and_slide()
+func receber_dano(quantidade):
+	vida -= quantidade
+	print("Zumbi levou tiro! Vida restante: ", vida)
+	
+	$MeshInstance3D.transparency = 0.5
+	await get_tree().create_timer(0.1).timeout 
+	$MeshInstance3D.transparency = 0.0
+	
+	if vida <= 0:
+		morrer()
+
+func morrer():
+	print("Zumbi Morreu!")
+	queue_free() 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://kw1gjgfi56b4"]
+[gd_scene load_steps=7 format=3 uid="uid://kw1gjgfi56b4"]
 
 [ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
 [ext_resource type="PackedScene" uid="uid://dchn0obba5lso" path="res://cenas/player.tscn" id="2_2pnjn"]
 [ext_resource type="PackedScene" uid="uid://dld1y6ssudvmk" path="res://cenas/zumbi.tscn" id="3_fwkce"]
+[ext_resource type="PackedScene" uid="uid://bxbht5ndis2s3" path="res://cenas/item_arma.tscn" id="4_8agmt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2pnjn"]
 size = Vector3(0.996521, 0.97101593, 0.96982574)
@@ -32,13 +33,11 @@ shape = SubResource("BoxShape3D_2pnjn")
 transform = Transform3D(1, 0, 0, 0, 0.73015034, 0.68328655, 0, -0.68328655, 0.73015034, -0.042862505, 1.0177816, 0.45127392)
 fov = 94.30871
 
-[node name="Player" parent="." instance=ExtResource("2_2pnjn")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.024767458, 0.5693709, -0.3176484)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_2pnjn")
 
 [node name="Arquitetura" type="CSGCombiner3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29498446, 0)
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
@@ -49,7 +48,13 @@ size = Vector3(20, 0.2, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06443977, 0.6090355, 0)
 operation = 2
 
+[node name="SMG" parent="." instance=ExtResource("4_8agmt")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.14648667, 0.50774884, -1.649047)
+
+[node name="Player" parent="." instance=ExtResource("2_2pnjn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.0501667, 1.034974, -0.8336048)
+
 [node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.1075436, 0.44447088, -0.14450192)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.95557785, 0.54030526, -1.5144656)
 
 [connection signal="body_entered" from="SistemasDeCamera/Gatilho_SalaEstar" to="SistemasDeCamera/Gatilho_SalaEstar" method="_on_body_entered"]
