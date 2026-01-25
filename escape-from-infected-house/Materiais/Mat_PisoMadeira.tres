@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bkqrhrnlfjyxy"]
+
+[ext_resource type="Texture2D" uid="uid://dxygqu3s4g46k" path="res://Texturas/WoodFloor064_1K-JPG_Color.jpg" id="1_mufjl"]
+[ext_resource type="Texture2D" uid="uid://bqqi6e2xj5xp" path="res://Texturas/WoodFloor064_1K-JPG_NormalDX.jpg" id="2_j7v56"]
+[ext_resource type="Texture2D" uid="uid://u4nul5fp1y5e" path="res://Texturas/WoodFloor064_1K-JPG_Roughness.jpg" id="3_76que"]
+
+[resource]
+albedo_texture = ExtResource("1_mufjl")
+roughness_texture = ExtResource("3_76que")
+normal_enabled = true
+normal_texture = ExtResource("2_j7v56")
+uv1_triplanar = true

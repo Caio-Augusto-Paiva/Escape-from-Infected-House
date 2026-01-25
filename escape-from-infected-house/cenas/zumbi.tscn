@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpse3y8g71l3f" path="res://scripts/zumbi.gd" id="1_slohk"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7fhua"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_slohk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kgwef"]
 
@@ -11,8 +11,8 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_slohk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_7fhua")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_slohk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
