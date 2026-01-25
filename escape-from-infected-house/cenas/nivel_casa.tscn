@@ -62,58 +62,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.9999999, 10.5)
 size = Vector3(0.5, 4, 19)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra6" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 1.9999999, 10.5)
+[node name="ParedeMestra6" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 size = Vector3(0.5, 4, 19)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra4" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 1.9999999, 10.5)
+[node name="ParedeMestra4" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 0)
 size = Vector3(0.5, 4, 19)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra5" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.9999999, 10.5)
+[node name="ParedeMestra5" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 size = Vector3(0.5, 4, 19)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra 90" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.5, 1.9999999, 3)
+[node name="ParedeMestra 90" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -7.5)
 size = Vector3(0.5, 4, 10)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra 93" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.9999999, 1.0000001)
+[node name="ParedeMestra 93" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0, -9.5)
 size = Vector3(0.5, 4, 41)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra 94" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5, 1.9999999, -10)
+[node name="ParedeMestra 94" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -20.5)
 size = Vector3(0.5, 4, 16)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra 95" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 1.9999999, 20)
+[node name="ParedeMestra 95" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 0, 9.5)
 size = Vector3(0.5, 4, 40)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra 97" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 1.9999999, 13)
+[node name="ParedeMestra 97" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.5, 0, 2.5)
 size = Vector3(0.5, 4, 21)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra 92" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.5, 1.9999999, 10)
+[node name="ParedeMestra 92" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, -0.5)
 size = Vector3(0.5, 4, 12)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra2" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.9999999, 5)
+[node name="ParedeMestra2" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5.5)
 size = Vector3(0.5, 4, 31)
 material = ExtResource("3_jiefh")
 
-[node name="ParedeMestra3" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.9999999, 0)
+[node name="ParedeMestra3" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10.5)
 size = Vector3(0.5, 4, 20)
 material = ExtResource("3_jiefh")
 
@@ -122,33 +122,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.2, 1)
 operation = 2
 size = Vector3(2, 2.2, 1)
 
-[node name="Porta1" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, 6.5)
+[node name="Porta1" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/Porta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5.5)
 operation = 2
 size = Vector3(2, 2.2, 2)
 
-[node name="Porta2" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, 16.5)
+[node name="Porta2" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/Porta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 15.5)
 operation = 2
 size = Vector3(2, 2.2, 2)
 
-[node name="Porta3" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.2, 16.5)
+[node name="Porta3" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/Porta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15.5)
 operation = 2
 size = Vector3(2, 2.2, 2)
 
-[node name="Porta4" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.2, 11.5)
+[node name="Porta4" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/Porta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 10.5)
 operation = 2
 size = Vector3(2, 2.2, 2)
 
-[node name="Porta5" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, 11.5)
+[node name="Porta5" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/Porta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 10.5)
 operation = 2
 size = Vector3(2, 2.2, 2)
 
-[node name="Porta6" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.2, 11.5)
+[node name="Porta6" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/Porta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 10.5)
 operation = 2
 size = Vector3(2, 2.2, 2)
 
