@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dld1y6ssudvmk"]
+
+[ext_resource type="Script" uid="uid://bpse3y8g71l3f" path="res://scripts/zumbi.gd" id="1_slohk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7fhua"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kgwef"]
+
+[node name="Zumbi" type="CharacterBody3D"]
+script = ExtResource("1_slohk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_7fhua")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_kgwef")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

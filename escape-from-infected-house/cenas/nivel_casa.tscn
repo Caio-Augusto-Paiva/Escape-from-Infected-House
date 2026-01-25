@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://kw1gjgfi56b4"]
+
+[ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
+[ext_resource type="PackedScene" uid="uid://dchn0obba5lso" path="res://cenas/player.tscn" id="2_2pnjn"]
+[ext_resource type="PackedScene" uid="uid://dld1y6ssudvmk" path="res://cenas/zumbi.tscn" id="3_fwkce"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pnjn"]
+size = Vector3(0.996521, 0.97101593, 0.96982574)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2pnjn"]
+vertices = PackedVector3Array(-9.5, 0.4, -9.5, -9.5, 0.4, 9.5, 9.5, 0.4, 9.5, 9.5, 0.4, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="NivelCasa" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="SistemasDeCamera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24566853, 0)
+
+[node name="Gatilho_SalaEstar" type="Area3D" parent="SistemasDeCamera" node_paths=PackedStringArray("camera_alvo")]
+script = ExtResource("1_y2j4s")
+camera_alvo = NodePath("Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Gatilho_SalaEstar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06283569, 0.37230623, -0.017313838)
+shape = SubResource("BoxShape3D_2pnjn")
+
+[node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Gatilho_SalaEstar"]
+transform = Transform3D(1, 0, 0, 0, 0.73015034, 0.68328655, 0, -0.68328655, 0.73015034, -0.042862505, 1.0177816, 0.45127392)
+fov = 94.30871
+
+[node name="Player" parent="." instance=ExtResource("2_2pnjn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.024767458, 0.5693709, -0.3176484)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_2pnjn")
+
+[node name="Arquitetura" type="CSGCombiner3D" parent="NavigationRegion3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
+use_collision = true
+size = Vector3(20, 0.2, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06443977, 0.6090355, 0)
+operation = 2
+
+[node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.1075436, 0.44447088, -0.14450192)
+
+[connection signal="body_entered" from="SistemasDeCamera/Gatilho_SalaEstar" to="SistemasDeCamera/Gatilho_SalaEstar" method="_on_body_entered"]
