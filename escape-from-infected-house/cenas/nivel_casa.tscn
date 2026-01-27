@@ -374,12 +374,10 @@ distancia_ataque = 0.1
 
 [node name="Mutante" parent="." instance=ExtResource("7_r6nfi")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 15.261364, 0.41034058, 8.284172)
-visible = false
 
-[node name="SpawnerZumbi" type="Node3D" parent="." node_paths=PackedStringArray("area_spawn")]
+[node name="SpawnerZumbi" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7494016, 0, -3.1297302)
 script = ExtResource("8_spawn")
-area_spawn = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnerZumbi"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7687931, 1.0862849, 1.6433246)

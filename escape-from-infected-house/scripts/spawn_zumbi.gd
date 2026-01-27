@@ -11,6 +11,12 @@ extends Node3D
 # Arraste o nó CollisionShape3D que você criou para esta variável no Inspector
 @export var area_spawn: CollisionShape3D 
 
+# --- CONFIGURAÇÕES DE ZUMBI ---
+@export var velocidade_zumbi: float = 2.0
+@export var dano_zumbi: int = 15
+@export var vida_zumbi: int = 100
+@export var distancia_ataque: float = 1.0
+
 # --- CONTROLE INTERNO ---
 var zumbis_vivos: Array = []
 var tempo_proximo_spawn: float = 0.0
@@ -41,6 +47,12 @@ func spawn_zumbi():
 	# --- NOVA LÓGICA DE POSIÇÃO ---
 	# Define a posição antes de adicionar à cena
 	novo_zumbi.position = obter_posicao_aleatoria()
+	
+	# Aplica configurações
+	if "velocidade" in novo_zumbi: novo_zumbi.velocidade = velocidade_zumbi
+	if "dano_ataque" in novo_zumbi: novo_zumbi.dano_ataque = dano_zumbi
+	if "vida" in novo_zumbi: novo_zumbi.vida = vida_zumbi
+	if "distancia_ataque" in novo_zumbi: novo_zumbi.distancia_ataque = distancia_ataque
 	
 	add_child(novo_zumbi)
 	zumbis_vivos.append(novo_zumbi)
