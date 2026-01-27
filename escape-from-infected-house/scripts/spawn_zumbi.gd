@@ -1,0 +1,72 @@
+extends Node3D
+
+# --- CONFIGURAÇÕES DE SPAWN ---
+@export var cena_zumbi: PackedScene = preload("res://cenas/zumbi.tscn")
+@export var quantidade_inicial: int = 3
+@export var quantidade_maxima: int = 10
+@export var usar_spawn_contínuo: bool = true
+@export var tempo_spawn: float = 5.0
+
+# --- REFERÊNCIAS ---
+# Arraste o nó CollisionShape3D que você criou para esta variável no Inspector
+@export var area_spawn: CollisionShape3D 
+
+# --- CONTROLE INTERNO ---
+var zumbis_vivos: Array = []
+var tempo_proximo_spawn: float = 0.0
+
+func _ready():
+	# Verifica se a área foi definida para evitar erros
+	if not area_spawn:
+		push_warning("ATENÇÃO: 'area_spawn' não foi definida no Spawner de Zumbis!")
+	
+	for i in range(quantidade_inicial):
+		spawn_zumbi()
+
+func _physics_process(delta):
+	zumbis_vivos = zumbis_vivos.filter(func(z): return is_instance_valid(z))
+	
+	if usar_spawn_contínuo and zumbis_vivos.size() < quantidade_maxima:
+		tempo_proximo_spawn -= delta
+		if tempo_proximo_spawn <= 0:
+			spawn_zumbi()
+			tempo_proximo_spawn = tempo_spawn
+
+func spawn_zumbi():
+	if zumbis_vivos.size() >= quantidade_maxima:
+		return
+	
+	var novo_zumbi = cena_zumbi.instantiate()
+	
+	# --- NOVA LÓGICA DE POSIÇÃO ---
+	# Define a posição antes de adicionar à cena
+	novo_zumbi.position = obter_posicao_aleatoria()
+	
+	add_child(novo_zumbi)
+	zumbis_vivos.append(novo_zumbi)
+
+# Função auxiliar para calcular ponto dentro da BoxShape
+func obter_posicao_aleatoria() -> Vector3:
+	# Se não houver área definida, spawna no centro do Spawner (0,0,0)
+	if not area_spawn or not area_spawn.shape:
+		return Vector3.ZERO
+		
+	# Assume que é um BoxShape3D
+	var shape = area_spawn.shape
+	if shape is BoxShape3D:
+		var tamanho = shape.size
+		
+		# Calcula offsets aleatórios baseados na metade do tamanho (centro é 0,0,0 local)
+		var x = randf_range(-tamanho.x / 2, tamanho.x / 2)
+		# Se quiser que eles spawnem no chão, mantenha Y fixo ou use range pequeno
+		var y = 0.0 # Pode mudar para: randf_range(-tamanho.y / 2, tamanho.y / 2) se for área aérea
+		var z = randf_range(-tamanho.z / 2, tamanho.z / 2)
+		
+		# Pega a posição aleatória local
+		var pos_local = Vector3(x, y, z)
+		
+		# Converte a posição local da caixa para a posição relativa ao Spawner
+		# Isso permite que você mova/gire o CollisionShape e o spawn acompanhe
+		return area_spawn.position + pos_local
+		
+	return Vector3.ZERO

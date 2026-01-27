@@ -41,55 +41,67 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravidade * delta
 	
+	# Variável para controlar a intenção de animação
+	var esta_perseguindo = false
+	
 	# 2. Comportamento (IA)
 	if player:
 		var distancia = global_position.distance_to(player.global_position)
 		
-		# Só anda se estiver longe do alcance do ataque
+		# LÓGICA DE MOVIMENTO
 		if distancia > distancia_ataque:
-			# Define o destino
-			agente_nav.target_position = player.global_position
+			esta_perseguindo = true # Marcamos que a intenção é andar
 			
-			# Calcula o próximo passo
+			agente_nav.target_position = player.global_position
 			var proxima_pos = agente_nav.get_next_path_position()
 			var direcao = (proxima_pos - global_position).normalized()
-			direcao.y = 0 # Não voar
+			direcao.y = 0 
 			
-			velocity.x = direcao.x * velocidade
-			velocity.z = direcao.z * velocidade
+			# Interpolação (lerp) ajuda a suavizar mudanças bruscas de direção
+			velocity.x = lerp(velocity.x, direcao.x * velocidade, 10.0 * delta)
+			velocity.z = lerp(velocity.z, direcao.z * velocidade, 10.0 * delta)
 			
-			# Faz o zumbi olhar para o player
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+		
+		# LÓGICA DE PARADA / ATAQUE
 		else:
-			# Chegou perto? Para.
-			velocity.x = 0
-			velocity.z = 0
+			esta_perseguindo = false # Marcamos que ele deve parar
 			
-			# Tenta atacar (se o cooldown permitir)
+			# Freio suave ao chegar perto
+			velocity.x = move_toward(velocity.x, 0, velocidade * delta * 5)
+			velocity.z = move_toward(velocity.z, 0, velocidade * delta * 5)
+			
 			if cooldown_ataque <= 0:
 				atacar()
 
 	move_and_slide()
 	
-	# Atualiza o timer de ataque e animação
+	# --- GERENCIAMENTO DE ANIMAÇÃO E COOLDOWNS ---
+	
 	if cooldown_ataque > 0:
 		cooldown_ataque -= delta
 	
+	# Se estiver atacando (tempo de animação rolando)
 	if tempo_animacao_ataque > 0:
 		tempo_animacao_ataque -= delta
 		
-		# Aplica o dano mais atrasado na animação (quando já passou 75% da animação)
-		if not dano_aplicado and tempo_animacao_ataque < 0.375:
+		# Lógica de aplicar dano no meio da animação
+		if not dano_aplicado and tempo_animacao_ataque < 0.375: # Ajuste esse valor conforme sua animação
 			dano_aplicado = true
 			if player and player.has_method("receber_dano"):
 				player.receber_dano(dano_ataque)
+
+	# Se NÃO estiver atacando, controlamos Walk/Idle
+	elif state_machine:
+		var estado_atual = state_machine.get_current_node()
 		
-		# Quando a animação termina, força volta para Walk ou idle
-		if tempo_animacao_ataque <= 0 and state_machine and player:
-			var distancia = global_position.distance_to(player.global_position)
-			if distancia > distancia_ataque:
+		# AQUI ESTÁ A CORREÇÃO:
+		# Usamos a variável 'esta_perseguindo' em vez de velocity.length()
+		if esta_perseguindo:
+			if estado_atual != "Walk":
 				state_machine.travel("Walk")
-			else:
+		else:
+			if estado_atual != "idle":
 				state_machine.travel("idle")
 	
 	# 3. Atualizar Animações (Baseado na velocidade real)
