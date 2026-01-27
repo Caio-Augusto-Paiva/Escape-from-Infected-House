@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bxbht5ndis2s3" path="res://cenas/item_arma.tscn" id="4_8agmt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jiefh"]
-size = Vector3(10.88579, 0.97101593, 2.8951936)
+size = Vector3(10.759533, 0.97101593, 2.8951936)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6nfi"]
-size = Vector3(12.0158615, 0.97101593, 6.436118)
+size = Vector3(11.420895, 0.97101593, 6.436118)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0oo2q"]
 size = Vector3(2.8086057, 0.97101593, 12.031577)
@@ -43,7 +43,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera1"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.1342306, 0.37230623, -4.4484477)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.1342306, 0.37230623, -4.511576)
 shape = SubResource("BoxShape3D_jiefh")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera1"]
@@ -68,7 +68,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera3"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.212322, 0.40472257, -31.985012)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.212322, 0.40472257, -31.687529)
 shape = SubResource("BoxShape3D_r6nfi")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera3"]
@@ -246,7 +246,7 @@ size = Vector3(2, 2.2, 2)
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.14648667, 0.50774884, -1.649047)
 
 [node name="Player" parent="." instance=ExtResource("2_2pnjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.387363, 2.034974, 11.763144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5103512, 2.034974, -3.75564)
 
 [node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9346998, 0.79099596, -1.3240805)
