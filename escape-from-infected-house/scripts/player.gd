@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # --- CONFIGURAÇÕES DE MOVIMENTO ---
-@export var velocidade_movimento : float = 3.0
+@export var velocidade_movimento : float = 5.0
 @export var velocidade_rotacao : float = 4.5
 var gravidade = 9.8
 
