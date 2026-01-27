@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kw1gjgfi56b4"]
+[gd_scene load_steps=16 format=3 uid="uid://kw1gjgfi56b4"]
 
 [ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
 [ext_resource type="PackedScene" uid="uid://dchn0obba5lso" path="res://cenas/player.tscn" id="2_2pnjn"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dld1y6ssudvmk" path="res://cenas/zumbi.tscn" id="3_fwkce"]
 [ext_resource type="Material" uid="uid://e6n3l7yef155" path="res://Materiais/Mat_ParedeTijolos.tres" id="3_jiefh"]
 [ext_resource type="PackedScene" uid="uid://bxbht5ndis2s3" path="res://cenas/item_arma.tscn" id="4_8agmt"]
+[ext_resource type="PackedScene" uid="uid://b1526cgvjviqw" path="res://cenas/mutante.tscn" id="7_r6nfi"]
+
+[sub_resource type="Environment" id="Environment_jiefh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jiefh"]
 size = Vector3(10.759533, 0.97101593, 2.8951936)
@@ -34,6 +37,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jiefh")
 
 [node name="SistemasDeCamera" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24566853, 0)
@@ -246,11 +250,7 @@ size = Vector3(2, 2.2, 2)
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.14648667, 0.50774884, -1.649047)
 
 [node name="Player" parent="." instance=ExtResource("2_2pnjn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5103512, 2.034974, -3.75564)
-
-[node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9346998, 0.79099596, -1.3240805)
-visible = false
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0.5103512, 2.034974, -3.75564)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -270,6 +270,12 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "GAME OVER"
+
+[node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.130451, 0.41394198, -1.8051324)
+
+[node name="Mutante" parent="." instance=ExtResource("7_r6nfi")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.288349, 0.41034058, 8.284172)
 
 [connection signal="body_entered" from="SistemasDeCamera/Camera1" to="SistemasDeCamera/Camera1" method="_on_body_entered"]
 [connection signal="body_entered" from="SistemasDeCamera/Camera2" to="SistemasDeCamera/Camera2" method="_on_body_entered"]

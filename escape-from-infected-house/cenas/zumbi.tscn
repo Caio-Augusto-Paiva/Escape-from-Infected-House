@@ -1,11 +1,188 @@
-[gd_scene load_steps=4 format=3 uid="uid://dld1y6ssudvmk"]
+[gd_scene load_steps=18 format=3 uid="uid://dld1y6ssudvmk"]
 
 [ext_resource type="Script" uid="uid://bpse3y8g71l3f" path="res://scripts/zumbi.gd" id="1_slohk"]
 [ext_resource type="PackedScene" uid="uid://3g5uoecmuxmm" path="res://Modelos/Yaku J Ignite.fbx" id="2_7fhua"]
+[ext_resource type="AnimationLibrary" uid="uid://chuk5c5fcrbpu" path="res://Animacoes/Zombie Attack.fbx" id="3_sovnj"]
+[ext_resource type="AnimationLibrary" uid="uid://c8wpuimnhje7l" path="res://Animacoes/Zombie Idle.fbx" id="4_3og6v"]
+[ext_resource type="AnimationLibrary" uid="uid://dbuuja1403b8k" path="res://Animacoes/Zombie Walk.fbx" id="5_4xlkx"]
+
+[sub_resource type="Animation" id="Animation_vxw57"]
+resource_name = "mixamo_com"
+length = 0.033333335
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D:mixamorig_LeftUpLeg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 5.8061428e-08, -0.032271124, -0.9994792, -1.6158465e-07)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D:mixamorig_RightUpLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 4.357855e-08, -0.032266177, -0.9994793, -1.6699688e-07)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D:mixamorig_LeftLeg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.08936339, 1.5489862e-10, 2.2600535e-10, 0.9959991)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D:mixamorig_RightLeg")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.089355394, 1.31839215e-08, -1.0826689e-08, 0.9959998)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D:mixamorig_LeftFoot")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.4972197, -0.04252853, 0.057149883, 0.8646952)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton3D:mixamorig_RightFoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.4972148, 0.042530186, -0.0571498, 0.86469793)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton3D:mixamorig_RightShoulder")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.5094289, 0.49003094, -0.516338, -0.48347384)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton3D:mixamorig_LeftForeArm")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -2.9296652e-07, -8.940725e-08, 3.729248e-07, 1)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton3D:mixamorig_RightForeArm")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -2.980235e-08, 7.45058e-08, 3.6154606e-07, 1)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton3D:mixamorig_RightHand")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -1.1147048e-12, 3.7029386e-05, 2.9803427e-08, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("Skeleton3D:mixamorig_RightHandThumb1")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.21941257, -0.06886327, -0.25408623, 0.9394446)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("Skeleton3D:mixamorig_RightHandRing1")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 1.3272048e-24, -4.8727283e-31, -3.6714212e-07, 1)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("Skeleton3D:mixamorig_LeftHandThumb2")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 1.5356156e-07, -3.8123293e-08, 3.929827e-07, 1)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Skeleton3D:mixamorig_RightHandThumb2")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -1.9581636e-07, -4.4423132e-08, 5.118468e-07, 1)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Skeleton3D:mixamorig_RightHandRing2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -2.9796789e-08, 2.9797897e-08, 6.824189e-08, 1)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = true
+tracks/15/enabled = true
+tracks/15/path = NodePath("Skeleton3D:mixamorig_RightHandPinky2")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, 2.9805648e-08, -1.4905549e-08, 2.8849107e-07, 1)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = true
+tracks/16/enabled = true
+tracks/16/path = NodePath("Skeleton3D:mixamorig_RightHandThumb3")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 9.839087e-08, 6.230072e-08, -2.3101356e-07, 1)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = true
+tracks/17/enabled = true
+tracks/17/path = NodePath("Skeleton3D:mixamorig_RightHandPinky3")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 2.9801226e-08, 4.4707885e-08, -3.4809483e-07, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xqi0"]
+_data = {
+&"mixamo_com": SubResource("Animation_vxw57")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_slohk"]
 radius = 1.5742188
 height = 11.189392
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_151dw"]
+animation = &"Zombie Attack/mixamo_com"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gldyx"]
+animation = &"Zombie Walk/mixamo_com"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aeawl"]
+animation = &"Zombie Idle/mixamo_com"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bvytq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tc1s3"]
+advance_mode = 2
+advance_condition = &"esta_perseguindo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3qqkk"]
+advance_mode = 2
+advance_condition = &"esta_parado"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqxg0"]
+xfade_time = 0.1
+advance_condition = &"esta_atacando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6sb74"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_13m4x"]
+states/Attack/node = SubResource("AnimationNodeAnimation_151dw")
+states/Attack/position = Vector2(688, 50)
+states/Start/position = Vector2(230, 100)
+states/Walk/node = SubResource("AnimationNodeAnimation_gldyx")
+states/Walk/position = Vector2(438, 50)
+states/idle/node = SubResource("AnimationNodeAnimation_aeawl")
+states/idle/position = Vector2(538, 143)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bvytq"), "idle", "Walk", SubResource("AnimationNodeStateMachineTransition_tc1s3"), "Walk", "idle", SubResource("AnimationNodeStateMachineTransition_3qqkk"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_lqxg0"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_6sb74")]
 
 [node name="Zumbi" type="CharacterBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -14,8 +191,81 @@ script = ExtResource("1_slohk")
 [node name="Yaku J Ignite" parent="." instance=ExtResource("2_7fhua")]
 transform = Transform3D(-5, 0, -4.3711393e-07, 0, 5, 0, 4.3711393e-07, 0, -5, 0, 0, 0)
 
+[node name="Skeleton3D" parent="Yaku J Ignite" index="0"]
+bones/0/position = Vector3(-0.058630817, 0.98954964, 1.2567605)
+bones/0/rotation = Quaternion(0.088201985, 0.3173386, 0.013132462, 0.9441103)
+bones/1/rotation = Quaternion(0.053980578, -0.006347221, 0.045300227, 0.99749374)
+bones/2/rotation = Quaternion(0.11431949, 0.0073106913, 0.057827868, 0.9917326)
+bones/3/rotation = Quaternion(0.11820875, 0.005600728, 0.049537685, 0.9917366)
+bones/4/rotation = Quaternion(0.093174584, -0.04456648, 0.038424946, 0.9939095)
+bones/5/rotation = Quaternion(-0.16898878, -0.14749445, -0.09799203, 0.9695803)
+bones/7/rotation = Quaternion(-0.41020936, -0.5342432, 0.21488163, -0.70720464)
+bones/8/rotation = Quaternion(0.08224522, -0.38941768, 0.49742877, 0.7708141)
+bones/9/rotation = Quaternion(-2.8555755e-07, -1.111701e-08, 0.31491938, 0.9491185)
+bones/10/rotation = Quaternion(0.023070903, -0.07865843, 0.057804417, 0.994957)
+bones/11/rotation = Quaternion(0.19908062, 0.074145116, 0.20681904, 0.9550369)
+bones/12/rotation = Quaternion(0.046715565, 0.017143676, -0.002249804, 0.9987587)
+bones/13/rotation = Quaternion(0.022871448, -0.1020573, -0.3405696, 0.93438405)
+bones/15/rotation = Quaternion(0.10984907, -0.08881306, 0.07910598, 0.9868068)
+bones/16/rotation = Quaternion(0.17706375, -0.0031619952, -0.023802325, 0.98390645)
+bones/17/rotation = Quaternion(0.34167486, -0.0015063976, -0.04561038, 0.9387096)
+bones/19/rotation = Quaternion(0.001884235, -0.008327448, 0.019479187, 0.9997738)
+bones/20/rotation = Quaternion(0.4517938, -0.010356386, -0.057842374, 0.89018506)
+bones/21/rotation = Quaternion(0.15419547, -0.005471063, -0.020253262, 0.9878177)
+bones/23/rotation = Quaternion(-0.14994033, -0.0068009784, -0.10501409, 0.98307866)
+bones/24/rotation = Quaternion(0.21956456, -0.0067275967, -0.02912061, 0.97514004)
+bones/25/rotation = Quaternion(0.31330475, -0.0032743914, -0.041446548, 0.9487422)
+bones/27/rotation = Quaternion(-0.034534313, 0.036928453, -0.21631591, 0.9750134)
+bones/28/rotation = Quaternion(0.23124851, -0.0054326346, -0.03149591, 0.9723696)
+bones/29/rotation = Quaternion(0.45983514, -0.00250921, -0.062075455, 0.88582844)
+bones/31/rotation = Quaternion(0.40189183, -0.5714206, 0.57127815, 0.4308165)
+bones/32/rotation = Quaternion(-0.14925161, 0.32285798, -0.67090255, 0.6506739)
+bones/33/rotation = Quaternion(-1.255413e-07, 3.8120277e-08, -0.12567659, 0.99207133)
+bones/34/rotation = Quaternion(0.07973709, -0.10469408, 0.028279306, 0.9908993)
+bones/35/rotation = Quaternion(0.03510368, -0.057947863, -0.43013805, 0.90021724)
+bones/36/rotation = Quaternion(-0.03272725, 0.058352094, 0.392101, 0.91748613)
+bones/37/rotation = Quaternion(-0.012353332, 0.009107538, -0.22188418, 0.9749523)
+bones/39/rotation = Quaternion(-0.18174122, -0.009094803, 0.031345997, 0.9828046)
+bones/40/rotation = Quaternion(0.37830222, 0.0030690467, 0.05033281, 0.92430776)
+bones/41/rotation = Quaternion(0.071314596, 0.00159104, 0.009549445, 0.9974069)
+bones/43/rotation = Quaternion(-0.12676896, 0.002976687, 0.02752819, 0.99154574)
+bones/44/rotation = Quaternion(0.49632275, 0.0097493, 0.062127583, 0.8658573)
+bones/45/rotation = Quaternion(0.37694132, 0.0051547573, 0.04932939, 0.9249083)
+bones/47/rotation = Quaternion(0.13442667, 0.01122179, 0.06921665, 0.9884395)
+bones/48/rotation = Quaternion(0.057483025, 0.0067280577, 0.008331361, 0.99828905)
+bones/49/rotation = Quaternion(0.049025346, 0.003399191, 0.006632034, 0.99876976)
+bones/51/rotation = Quaternion(0.2495295, 0.017596537, 0.08611086, 0.9643704)
+bones/52/rotation = Quaternion(0.4658868, 0.0051885387, 0.06240369, 0.8826258)
+bones/53/rotation = Quaternion(0.36578402, 0.0026098872, 0.04944997, 0.9293815)
+bones/55/rotation = Quaternion(0.07937705, 0.100450344, 0.98041767, -0.14963372)
+bones/56/rotation = Quaternion(-0.23272327, -0.00085072883, 0.0820206, 0.9690779)
+bones/57/rotation = Quaternion(0.50445926, -0.1425815, -0.14692712, 0.838811)
+bones/58/rotation = Quaternion(0.4251547, -0.049764045, -0.010380934, 0.9036921)
+bones/60/rotation = Quaternion(-0.13465802, 0.3896037, 0.9033498, 0.11847023)
+bones/61/rotation = Quaternion(-0.49332464, 0.046203997, 0.04196834, 0.8676029)
+bones/62/rotation = Quaternion(0.6057499, 0.046707567, -0.056115758, 0.7922983)
+bones/63/rotation = Quaternion(0.31275633, 0.03421784, 0.009771721, 0.9491666)
+
+[node name="AnimationPlayer" parent="Yaku J Ignite" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_6xqi0"),
+&"Zombie Attack": ExtResource("3_sovnj"),
+&"Zombie Idle": ExtResource("4_3og6v"),
+&"Zombie Walk": ExtResource("5_4xlkx")
+}
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.868744, 0)
 shape = SubResource("CapsuleShape3D_slohk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Yaku J Ignite")
+tree_root = SubResource("AnimationNodeStateMachine_13m4x")
+anim_player = NodePath("../Yaku J Ignite/AnimationPlayer")
+parameters/conditions/esta_atacando = false
+parameters/conditions/esta_parado = false
+parameters/conditions/esta_perseguindo = false
+
+[editable path="Yaku J Ignite"]

@@ -1,21 +1,259 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1526cgvjviqw"]
+[gd_scene load_steps=19 format=3 uid="uid://b1526cgvjviqw"]
 
 [ext_resource type="Script" uid="uid://dcjy3e6j7gb3f" path="res://scripts/mutante.gd" id="1_2e6n4"]
 [ext_resource type="PackedScene" uid="uid://bw887jcuseopl" path="res://Modelos/Mutant.fbx" id="2_cvdyh"]
+[ext_resource type="AnimationLibrary" uid="uid://d3lfrht1vfpl8" path="res://Animacoes/Jump Attack.fbx" id="3_ytlx7"]
+[ext_resource type="AnimationLibrary" uid="uid://bb2ss4ee5scgk" path="res://Animacoes/Mutant Idle.fbx" id="4_0jw40"]
+[ext_resource type="AnimationLibrary" uid="uid://cbnoy858mpnty" path="res://Animacoes/Mutant Run.fbx" id="5_3poni"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_slohk"]
-radius = 1.5742188
-height = 11.189392
+[sub_resource type="Animation" id="Animation_5uxw4"]
+resource_name = "mixamo_com"
+length = 0.033333335
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D:mixamorig_Hips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1.3286991e-07, 0.9244989, -0.0032974218)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D:mixamorig_LeftUpLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1.4733616e-08, 0.02003954, 0.9997992, 5.750436e-07)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D:mixamorig_RightUpLeg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 2.963786e-08, 0.020037143, 0.99979925, 1.318078e-06)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D:mixamorig_LeftLeg")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.075063474, 1.2100271e-08, -3.7899807e-07, 0.99717873)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D:mixamorig_RightLeg")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -0.0750597, -1.3372573e-08, 3.7338407e-07, 0.99717903)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton3D:mixamorig_LeftFoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.4287609, 6.376302e-07, 3.7768228e-07, 0.903418)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton3D:mixamorig_RightFoot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.4287596, 6.2911874e-07, 3.7363938e-07, 0.9034186)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton3D:mixamorig_RightShoulder")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -0.45802274, 0.54147255, -0.4823695, -0.5141423)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton3D:mixamorig_LeftArm")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.057355527, -0.0014790477, 0.025723284, 0.9980213)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton3D:mixamorig_RightArm")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.05761338, 0.0014921692, -0.025838064, 0.9980034)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("Skeleton3D:mixamorig_LeftForeArm")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, -4.3928702e-07, -1.261372e-08, 9.75585e-08, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("Skeleton3D:mixamorig_RightForeArm")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -3.008201e-07, -2.1326154e-07, 5.0853245e-08, 1)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("Skeleton3D:mixamorig_RightHand")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 0.026677668, -0.04673056, 0.21865846, 0.9743167)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Skeleton3D:mixamorig_RightHandIndex1")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -0.037122574, 1.5605145e-06, -0.21712923, 0.97543675)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Skeleton3D:mixamorig_RightHandPinky1")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.12728395, 0.6897385, -0.17978333, 0.6897373)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = true
+tracks/15/enabled = true
+tracks/15/path = NodePath("Skeleton3D:mixamorig_RightHandThumb1")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, 0.19706956, -0.010314597, -0.44746995, 0.8722545)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = true
+tracks/16/enabled = true
+tracks/16/path = NodePath("Skeleton3D:mixamorig_RightHandThumb2")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, -2.8437546e-07, -0.007013701, 2.3165329e-07, 0.9999754)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = true
+tracks/17/enabled = true
+tracks/17/path = NodePath("Skeleton3D:mixamorig_RightHandIndex3")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, -4.1925608e-07, -0.00069324253, -2.2472506e-07, 0.99999976)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = true
+tracks/18/enabled = true
+tracks/18/path = NodePath("Skeleton3D:mixamorig_RightHandThumb3")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, 2.6654175e-07, -0.010518181, -1.2746564e-07, 0.9999447)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jtxu"]
+_data = {
+&"mixamo_com": SubResource("Animation_5uxw4")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvdyh"]
+radius = 2.4458008
+height = 9.42041
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlnbw"]
+animation = &"Jump Attack/mixamo_com"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fuucx"]
+animation = &"Mutant Idle/mixamo_com"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e7f85"]
+animation = &"Mutant Run/mixamo_com"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytlx7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0jw40"]
+xfade_time = 0.2
+advance_condition = &"andando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3poni"]
+xfade_time = 0.1
+advance_condition = &"atacando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mlnbw"]
+xfade_time = 0.2
+advance_condition = &"parado"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fuucx"]
+xfade_time = 0.1
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e7f85"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b4j10"]
+states/attack/node = SubResource("AnimationNodeAnimation_mlnbw")
+states/attack/position = Vector2(676, 64)
+states/idle/node = SubResource("AnimationNodeAnimation_fuucx")
+states/idle/position = Vector2(576, 156)
+states/walk/node = SubResource("AnimationNodeAnimation_e7f85")
+states/walk/position = Vector2(471, 64)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ytlx7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_0jw40"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_3poni"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_mlnbw"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_fuucx"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_e7f85")]
 
 [node name="Mutante" type="CharacterBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_2e6n4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_slohk")
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Mutant" parent="." instance=ExtResource("2_cvdyh")]
 transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Mutant" index="0"]
+bones/0/position = Vector3(-0.00023624003, 0.8088727, 0.013803437)
+bones/0/rotation = Quaternion(0.004785141, -0.0012106417, -0.011969124, 0.9999162)
+bones/1/rotation = Quaternion(0.14227502, 0.0012301495, 0.0044956156, 0.9898163)
+bones/2/rotation = Quaternion(0.10131895, 0.0011502899, 0.0096791545, 0.9948063)
+bones/3/rotation = Quaternion(0.12329256, 0.00039286586, 0.008639613, 0.9923327)
+bones/4/rotation = Quaternion(0.04034149, -0.008895224, 0.0056302883, 0.9991305)
+bones/5/rotation = Quaternion(-0.12785329, 0.025332749, -0.02535855, 0.99114525)
+bones/7/rotation = Quaternion(0.5835153, 0.53936857, -0.28102538, 0.53815997)
+bones/8/rotation = Quaternion(0.35534415, -0.26484355, 0.1925954, 0.87549734)
+bones/9/rotation = Quaternion(0.15186208, 0.052063648, 0.44425437, 0.88139963)
+bones/11/rotation = Quaternion(0.5381723, -0.5707009, 0.32337704, 0.52924323)
+bones/12/rotation = Quaternion(0.4248084, 0.2252229, -0.11526551, 0.8692101)
+bones/13/rotation = Quaternion(0.11818137, 0.07802968, -0.5913803, 0.7938601)
+bones/14/rotation = Quaternion(0.071934335, 0.20548902, 0.109927714, 0.96980184)
+bones/15/rotation = Quaternion(0.08171865, -0.14176351, -0.21884806, 0.9619411)
+bones/16/rotation = Quaternion(0.4791223, 0.036862638, -0.108693615, 0.87021196)
+bones/17/rotation = Quaternion(0.036533624, 0.032184523, -0.124169745, 0.99106586)
+bones/19/rotation = Quaternion(0.36629644, 0.70899284, -0.0043567745, 0.60260874)
+bones/20/rotation = Quaternion(0.0006697629, 2.3507695e-05, 0.3998221, 0.9165926)
+bones/21/rotation = Quaternion(0.00017114478, -4.4366574e-05, 0.22628325, 0.97406155)
+bones/23/rotation = Quaternion(0.3631206, -0.24731022, -0.37966424, 0.8141476)
+bones/24/rotation = Quaternion(-0.14202172, -0.06470138, 0.25607997, 0.9539741)
+bones/25/rotation = Quaternion(-0.14897302, -0.09957483, 0.18031527, 0.96714956)
+bones/27/rotation = Quaternion(0.07759429, 0.30269277, 0.9221799, -0.22790493)
+bones/28/rotation = Quaternion(-0.46858054, 0.018666325, -0.08925738, 0.8787019)
+bones/29/rotation = Quaternion(0.5235966, 0.0382822, -0.10783877, 0.8442464)
+bones/30/rotation = Quaternion(0.41331235, 0.037202895, -0.11706261, 0.90226674)
+bones/32/rotation = Quaternion(-0.1606135, 0.3069939, 0.924097, 0.16125461)
+bones/33/rotation = Quaternion(-0.46416783, -0.07162484, 0.006685801, 0.8828214)
+bones/34/rotation = Quaternion(0.5182084, 0.0061682626, 0.121331915, 0.84658164)
+bones/35/rotation = Quaternion(0.4212337, 0.06606763, 0.13284372, 0.8947345)
+
+[node name="AnimationPlayer" parent="Mutant" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_1jtxu"),
+&"Jump Attack": ExtResource("3_ytlx7"),
+&"Mutant Idle": ExtResource("4_0jw40"),
+&"Mutant Run": ExtResource("5_3poni")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.687256, 0)
+shape = SubResource("CapsuleShape3D_cvdyh")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Mutant")
+tree_root = SubResource("AnimationNodeStateMachine_b4j10")
+anim_player = NodePath("../Mutant/AnimationPlayer")
+parameters/conditions/andando = false
+parameters/conditions/atacando = false
+parameters/conditions/parado = false
+
+[editable path="Mutant"]
