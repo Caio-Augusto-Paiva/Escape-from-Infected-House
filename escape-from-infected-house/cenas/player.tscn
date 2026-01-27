@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dchn0obba5lso"]
+[gd_scene load_steps=5 format=3 uid="uid://dchn0obba5lso"]
 
 [ext_resource type="Script" uid="uid://c0l47omebarv5" path="res://scripts/player.gd" id="1_8or6t"]
+[ext_resource type="PackedScene" uid="uid://bup4xqqf1wvrf" path="res://Modelos/Ch15_nonPBR.fbx" id="2_unwft"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ki28"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8or6t"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_unwft"]
+radius = 0.6123047
+height = 3.6149902
 
 [sub_resource type="BoxMesh" id="BoxMesh_8or6t"]
 
@@ -14,15 +13,12 @@
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_8or6t")
 
+[node name="Ch15_nonPBR" parent="." instance=ExtResource("2_unwft")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7191162, 0)
 shape = SubResource("CapsuleShape3D_8ki28")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_8or6t")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.065, 0.559028, -0.46387875)
-mesh = SubResource("BoxMesh_unwft")
 
 [node name="Mao" type="Node3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.547284, 0.105377674, -0.47380355)

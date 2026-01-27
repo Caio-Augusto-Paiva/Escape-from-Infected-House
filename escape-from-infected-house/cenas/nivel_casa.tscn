@@ -246,7 +246,7 @@ size = Vector3(2, 2.2, 2)
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.14648667, 0.50774884, -1.649047)
 
 [node name="Player" parent="." instance=ExtResource("2_2pnjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5103512, 2.034974, -3.75564)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5103512, 2.034974, -3.75564)
 
 [node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9346998, 0.79099596, -1.3240805)

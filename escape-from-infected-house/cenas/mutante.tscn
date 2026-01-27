@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1526cgvjviqw"]
+
+[ext_resource type="Script" uid="uid://dcjy3e6j7gb3f" path="res://scripts/mutante.gd" id="1_2e6n4"]
+[ext_resource type="PackedScene" uid="uid://bw887jcuseopl" path="res://Modelos/Mutant.fbx" id="2_cvdyh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_slohk"]
+radius = 1.5742188
+height = 11.189392
+
+[node name="Mutante" type="CharacterBody3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("1_2e6n4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_slohk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Mutant" parent="." instance=ExtResource("2_cvdyh")]
+transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 0, 0, 0)
