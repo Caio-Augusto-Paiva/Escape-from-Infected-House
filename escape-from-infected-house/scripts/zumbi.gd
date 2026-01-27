@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
 # --- STATUS DO ZUMBI ---
-@export var velocidade : float = 2.0
-@export var dano_ataque : int = 15
-@export var vida : int = 100
-@export var distancia_ataque : float = 1
+var velocidade : float = 2.0
+var dano_ataque : int = 15
+var vida : int = 100
+var distancia_ataque : float = 1
 
 var gravidade = 9.8
 
