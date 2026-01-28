@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://clbdl2iowka0l"]
+
+[ext_resource type="Script" uid="uid://ce0yfr02n1van" path="res://scripts/caixa_municao.gd" id="1_hvbf3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rlpgt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hvbf3"]
+
+[node name="caixa_municao" type="Area3D"]
+script = ExtResource("1_hvbf3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_rlpgt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_hvbf3")

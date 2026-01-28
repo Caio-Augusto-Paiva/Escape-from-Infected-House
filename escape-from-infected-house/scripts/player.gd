@@ -17,7 +17,13 @@ var vida_atual = 100
 var inventario = ["Pistola"] 
 var arma_atual_index = 0
 var tempo_ultimo_tiro = 0.0
-var tempo_animacao_tiro = 0.0  # Controla duração da animação
+var tempo_animacao_tiro = 0.0 
+
+var municao_reserva = {
+	"Pistola": 30,
+	"SMG": 60,
+	"Shotgun": 10
+}
 
 var status_armas = {
 	"Pistola": { "dano": 10, "cadencia": 0.5, "automatica": false, "alcance_maximo": 20 },
@@ -25,17 +31,19 @@ var status_armas = {
 	"Shotgun": { "dano_base": 50, "cadencia": 1.2, "automatica": false, "alcance_maximo": 10 }
 }
 
+# --- REFERÊNCIAS VISUAIS DAS ARMAS ---
+@onready var vis_pistola = $"Ch15_nonPBR/Skeleton3D/BoneAttachment3D/Visual_Pistola"
+@onready var vis_smg = $"Ch15_nonPBR/Skeleton3D/BoneAttachment3D/Visual_SMG"
+@onready var vis_shotgun = $"Ch15_nonPBR/Skeleton3D/BoneAttachment3D/Visual_Shotgun"
+
 # --- SISTEMA DE ANIMAÇÃO ---
-# Se o AnimationTree não existir ou tiver outro nome, ajuste aqui
 @onready var anim_tree = $AnimationTree
-# Pega o controlador da máquina de estados para viajar entre animações (ex: Tiro)
 @onready var state_machine = anim_tree.get("parameters/playback")
 
 func _ready():
-	# Inicialização do Raycast
+	# Inicialização do Raycast - não precisa reposicionar, usa a posição da cena
 	raycast.add_exception(self)
 	raycast.enabled = true
-	raycast.position = Vector3(0, 1.5, -0.5)
 	
 	# Inicialização da UI
 	if barra_vida:
@@ -45,9 +53,12 @@ func _ready():
 	# Ativa a árvore de animação
 	if anim_tree:
 		anim_tree.active = true
-		# Começa no estado idle
+		# Começa no estado Idle
 		if state_machine:
 			state_machine.travel("idle")
+			
+	# Atualiza visual inicial
+	atualizar_visual_arma()
 
 func _physics_process(delta):
 	# 1. Gravidade
@@ -83,7 +94,7 @@ func _physics_process(delta):
 	# Só muda se não estiver atirando E a animação de tiro terminou
 	if state_machine and not esta_atirando and tempo_animacao_tiro <= 0:
 		var estado_atual = state_machine.get_current_node()
-		# Só faz travel se precisar mudar de estado
+		
 		if input_movimento != 0 and estado_atual != "walk":
 			state_machine.travel("walk")
 		elif input_movimento == 0 and estado_atual != "idle":
@@ -99,14 +110,37 @@ func trocar_arma():
 	if arma_atual_index >= inventario.size():
 		arma_atual_index = 0
 	print("Arma equipada: " + inventario[arma_atual_index])
+	
+	atualizar_visual_arma()
+
+func atualizar_visual_arma():
+	# 1. Esconde TODAS as armas
+	if vis_pistola: vis_pistola.visible = false
+	if vis_smg: vis_smg.visible = false
+	if vis_shotgun: vis_shotgun.visible = false
+	
+	# 2. Mostra a correta
+	var arma_nome = inventario[arma_atual_index]
+	print("Atualizando visual para: ", arma_nome)
+	match arma_nome:
+		"Pistola":
+			if vis_pistola: vis_pistola.visible = true
+		"SMG":
+			if vis_smg: vis_smg.visible = true
+		"Shotgun":
+			if vis_shotgun: vis_shotgun.visible = true
 
 func gerenciar_tiro():
 	var arma_nome = inventario[arma_atual_index]
 	var stats = status_armas[arma_nome]
 	var current_time = Time.get_ticks_msec() / 1000.0
 	
-	# Verifica se está no cooldown
 	if current_time - tempo_ultimo_tiro < stats["cadencia"]:
+		return false
+
+	if municao_reserva[arma_nome] <= 0:
+		if Input.is_action_just_pressed("atirar"):
+			print("Sem munição para ", arma_nome)
 		return false
 
 	var apertou_gatilho = false
@@ -117,6 +151,8 @@ func gerenciar_tiro():
 
 	if apertou_gatilho:
 		atirar(arma_nome, stats)
+		municao_reserva[arma_nome] -= 1
+		print("Bala gasta! Resta: ", municao_reserva[arma_nome])
 		tempo_ultimo_tiro = current_time
 		return true
 	
@@ -126,13 +162,16 @@ func atirar(nome, stats):
 	raycast.target_position = Vector3(0, 0, -stats["alcance_maximo"])
 	raycast.force_raycast_update()
 	
-	# Toca a animação de tiro e define duração mínima
 	if state_machine:
 		state_machine.travel("Shoot")
-		tempo_animacao_tiro = 0.4  # A animação dura pelo menos 0.4 segundos
+		tempo_animacao_tiro = 0.4
+	
+	print("Atirou com ", nome, " - Raycast colidindo: ", raycast.is_colliding())
 	
 	if raycast.is_colliding():
 		var objeto = raycast.get_collider()
+		print("Raycast acertou: ", objeto.name)
+		
 		if objeto.has_method("receber_dano"):
 			var ponto = raycast.get_collision_point()
 			var dano_final = stats["dano"]
@@ -142,9 +181,12 @@ func atirar(nome, stats):
 				var fator = clamp(1.0 - (dist / stats["alcance_maximo"]), 0.0, 1.0)
 				dano_final = stats["dano_base"] * fator
 			
+			print("Aplicando ", dano_final, " de dano em ", objeto.name)
 			objeto.receber_dano(dano_final)
+		else:
+			print("Objeto ", objeto.name, " NÃO tem método receber_dano")
 
-# --- VIDA ---
+# --- VIDA E COLETA ---
 
 func receber_dano(quantidade):
 	vida_atual -= quantidade
@@ -155,3 +197,14 @@ func morrer():
 	print("GAME OVER")
 	if tela_game_over: tela_game_over.visible = true
 	get_tree().paused = true
+	
+func coletar_municao(tipo_arma, quantidade):
+	if tipo_arma in municao_reserva:
+		municao_reserva[tipo_arma] += quantidade
+		print("Pegou ", quantidade, " balas de ", tipo_arma)
+		
+		# Recarrega se estiver com a arma na mão
+		if inventario[arma_atual_index] == tipo_arma:
+			print("Recarregou arma atual!")
+	else:
+		print("Pegou munição de arma desconhecida")

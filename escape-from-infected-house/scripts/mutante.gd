@@ -103,6 +103,7 @@ func atacar():
 
 func receber_dano(quantidade):
 	vida_atual -= quantidade
+	print(">>> MUTANTE RECEBEU DANO! <<<")
 	print("Boss atingido! Vida: ", vida_atual, "/", vida_maxima)
 	
 	# MECÂNICA DE FÚRIA: Se a vida cair abaixo de 50% (250 HP)

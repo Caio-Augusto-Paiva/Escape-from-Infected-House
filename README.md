@@ -10,6 +10,7 @@ https://www.mixamo.com/#/?page=1&query=swat&type=Character - personagem
 https://ambientcg.com/view?id=Bricks066 -parede
 https://ambientcg.com/view?id=Marble012 -chao
 https://ambientcg.com/view?id=WoodFloor064 -madeira
+https://ambientcg.com/view?id=CorrugatedSteel007B -metal
 
 # Animaçoes 
 Zombie :
@@ -26,3 +27,8 @@ Mutant:
 https://www.mixamo.com/#/?page=1&query=mutant+&type=Motion%2CMotionPack -idle
 https://www.mixamo.com/#/?page=1&query=mutant+&type=Motion%2CMotionPack -run
 https://www.mixamo.com/#/?page=1&query=mutant++attack&type=Motion%2CMotionPack -attack
+
+# Armas
+https://sketchfab.com/3d-models/winchester-double-barrel-ps1-low-poly-62f00fd84c034faaaf99ce6789a94d80 -shotgun
+https://sketchfab.com/3d-models/low-poly-lebedev-pistol-91b067eeafa94e6e89736f5d46854d51 -pistol
+https://sketchfab.com/3d-models/low-poly-ump-45-a6a2df8bddf04f2eb7f4b14d2bd5ee8d -smg

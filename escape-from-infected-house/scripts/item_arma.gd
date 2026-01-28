@@ -22,4 +22,8 @@ func _on_body_entered(body):
 		# (O índice da nova arma é o tamanho da lista - 1)
 		body.arma_atual_index = body.inventario.size() - 1
 		
+		# Atualiza o visual da arma
+		if body.has_method("atualizar_visual_arma"):
+			body.atualizar_visual_arma()
+		
 		queue_free() # Some com o item do chão

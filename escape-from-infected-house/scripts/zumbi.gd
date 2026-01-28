@@ -8,6 +8,12 @@ var distancia_ataque : float = 1
 
 var gravidade = 9.8
 
+# --- DROP DE MUNIÇÃO (CONFIGURÁVEL NO INSPECTOR) ---
+@export var dropar_municao: bool = false
+@export_enum("Pistola", "SMG", "Shotgun") var tipo_municao_drop: String = "Pistola"
+@export var quantidade_municao_drop: int = 10
+@export var cena_caixa_municao: PackedScene = preload("res://cenas/caixa_municao.tscn")
+
 # --- REFERÊNCIAS ---
 @onready var agente_nav = $NavigationAgent3D
 @onready var visual = $"Yaku J Ignite" # Ou o nome do nó do seu modelo 3D
@@ -126,6 +132,7 @@ func atacar():
 
 func receber_dano(quantidade):
 	vida -= quantidade
+	print(">>> ZUMBI RECEBEU DANO! <<<")
 	print("Zumbi sofreu ", quantidade, " de dano. Vida restante: ", vida)
 	
 	if vida <= 0:
@@ -133,5 +140,16 @@ func receber_dano(quantidade):
 
 func morrer():
 	print("Zumbi Morreu!")
+	if dropar_municao and cena_caixa_municao:
+		var caixa = cena_caixa_municao.instantiate()
+		if caixa:
+			caixa.global_position = global_position
+			# Configura tipo e quantidade, se o script da caixa tiver essas variáveis
+			caixa.tipo_municao = tipo_municao_drop
+			caixa.quantidade = quantidade_municao_drop
+			# Atualiza o visual da caixa, caso exista o método
+			if caixa.has_method("atualizar_cor"):
+				caixa.atualizar_cor()
+			get_tree().current_scene.add_child(caixa)
 	# Opcional: Tocar animação de morte antes de sumir
 	queue_free()
