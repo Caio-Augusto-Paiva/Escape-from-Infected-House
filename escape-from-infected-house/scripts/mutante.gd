@@ -27,6 +27,7 @@ var cooldown_ataque = 0.0
 var tempo_animacao_ataque = 0.0 
 var dano_aplicado = false 
 var esta_dormindo = true
+signal mutante_morreu
 
 func _ready():
 	vida_atual = vida_maxima
@@ -159,5 +160,7 @@ func entrar_em_furia():
 
 func morrer():
 	print("BOSS DERROTADO!")
+	mutante_morreu.emit()
+	
 	if porta_boss: porta_boss.visible = true
 	queue_free()

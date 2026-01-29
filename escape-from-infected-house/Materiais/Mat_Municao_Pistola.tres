@@ -1,8 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hxp6k0hweana"]
-
-[ext_resource type="Texture2D" uid="uid://brffysh5aa42f" path="res://Texturas/CorrugatedSteel007B_1K-JPG_Color.jpg" id="1_pnxs7"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://hxp6k0hweana"]
 
 [resource]
-albedo_color = Color(0, 0, 1.0006096, 1)
-albedo_texture = ExtResource("1_pnxs7")
+albedo_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+metallic = 0.61
+roughness = 0.5
 uv1_triplanar = true

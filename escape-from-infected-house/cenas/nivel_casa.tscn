@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://kw1gjgfi56b4"]
+[gd_scene load_steps=29 format=3 uid="uid://kw1gjgfi56b4"]
 
 [ext_resource type="Script" uid="uid://b8ll2lpc5tn3j" path="res://scripts/nivel_casa.gd" id="1_ufdyn"]
 [ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dld1y6ssudvmk" path="res://cenas/zumbi.tscn" id="3_fwkce"]
 [ext_resource type="Material" uid="uid://e6n3l7yef155" path="res://Materiais/Mat_ParedeTijolos.tres" id="3_jiefh"]
 [ext_resource type="PackedScene" uid="uid://bxbht5ndis2s3" path="res://cenas/item_arma.tscn" id="4_8agmt"]
+[ext_resource type="Material" uid="uid://hxp6k0hweana" path="res://Materiais/Mat_Municao_Pistola.tres" id="5_27raq"]
 [ext_resource type="PackedScene" uid="uid://b2tn5ku4fwr4i" path="res://cenas/tela_game_over.tscn" id="7_27raq"]
 [ext_resource type="PackedScene" uid="uid://b1526cgvjviqw" path="res://cenas/mutante.tscn" id="7_r6nfi"]
 [ext_resource type="PackedScene" uid="uid://clbdl2iowka0l" path="res://cenas/caixa_municao.tscn" id="8_0oo2q"]
@@ -18,16 +19,16 @@
 size = Vector3(10.759533, 0.97101593, 4.159999)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6nfi"]
-size = Vector3(11.420895, 0.97101593, 6.436118)
+size = Vector3(11.420895, 0.97101593, 6.617381)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0oo2q"]
-size = Vector3(2.8086057, 0.97101593, 12.031577)
+size = Vector3(2.8086057, 0.97101593, 11.671184)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_87kbg"]
-size = Vector3(12.035263, 0.97101593, 2.0981388)
+size = Vector3(11.770561, 0.97101593, 2.0981388)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufdyn"]
-size = Vector3(11.915468, 0.97101593, 1.8034446)
+size = Vector3(11.915468, 0.97101593, 1.7394909)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4nrab"]
 size = Vector3(8.750265, 0.97101593, 2.3208728)
@@ -36,16 +37,16 @@ size = Vector3(8.750265, 0.97101593, 2.3208728)
 size = Vector3(8.868795, 0.97101593, 3.2079217)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_27raq"]
-size = Vector3(6.5431137, 0.97101593, 8.527508)
+size = Vector3(6.482006, 0.97101593, 8.31307)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rdr17"]
-size = Vector3(7.1416607, 0.97101593, 5.595266)
+size = Vector3(7.1416607, 0.97101593, 6.5584846)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ku7aw"]
-size = Vector3(7.396645, 0.97101593, 8.560126)
+size = Vector3(7.396645, 0.97101593, 7.253557)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ugn5"]
-size = Vector3(10.232243, 0.97101593, 8.560126)
+size = Vector3(10.232243, 0.97101593, 7.7293873)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2pnjn"]
 vertices = PackedVector3Array(-19.454285, 0.69498444, -8.992432, -19.454285, 0.69498444, -0.49243164, -10.954285, 0.69498444, -0.49243164, -10.954285, 0.69498444, -8.992432, 9.295715, 0.69498444, -8.992432, 9.295715, 0.69498444, -0.49243164, 14.295715, 0.69498444, -0.49243164, 14.295715, 0.69498444, -8.992432, 2.7957153, 0.69498444, -0.49243164, 3.2957153, 0.69498444, 0.0075683594, 5.0457153, 0.69498444, -0.49243164, 5.0457153, 0.69498444, -8.242432, -7.7042847, 0.69498444, -8.242432, -7.7042847, 0.69498444, -0.49243164, 5.0457153, 0.69498444, 2.7575684, 3.5457153, 0.69498444, 2.2575684, 2.2957153, 0.69498444, 2.7575684, 2.2957153, 0.69498444, 10.757568, 5.0457153, 0.69498444, 11.507568, 1.7957153, 0.69498444, 11.257568, -12.954285, 0.69498444, 3.5075684, -12.454285, 0.69498444, 2.7575684, -18.704285, 0.69498444, 2.7575684, -18.704285, 0.69498444, 11.757568, -12.454285, 0.69498444, 11.507568, -12.954285, 0.69498444, 10.757568, -0.95428467, 0.69498444, 2.7575684, -10.204285, 0.69498444, 2.7575684, -9.704285, 0.69498444, 3.5075684, -9.704285, 0.69498444, 8.507568, -0.95428467, 0.69498444, 8.507568, 9.295715, 0.69498444, 16.507568, 8.795715, 0.69498444, 17.007568, 9.295715, 0.69498444, 18.507568, 14.045715, 0.69498444, 18.507568, 14.045715, 0.69498444, 2.7575684, 9.295715, 0.69498444, 2.7575684, -0.95428467, 0.69498444, 17.007568, -0.45428467, 0.69498444, 16.507568, -0.95428467, 0.69498444, 14.757568, -18.704285, 0.69498444, 14.507568, -18.704285, 0.69498444, 18.507568, -0.95428467, 0.69498444, 18.507568, 5.0457153, 0.69498444, 18.507568, 5.5457153, 0.69498444, 17.257568, 5.0457153, 0.69498444, 16.507568, 2.2957153, 0.69498444, 17.007568, 2.2957153, 0.69498444, 18.507568, 2.2957153, 0.69498444, 14.757568, 1.7957153, 0.69498444, 16.257568, 5.0457153, 0.69498444, 14.757568)
@@ -55,11 +56,21 @@ agent_radius = 1.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_o36db"]
 size = Vector3(1, 1, 18.835297)
 
-[node name="NivelCasa" type="Node3D" node_paths=PackedStringArray("mutante", "porta_boss", "sensor")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkrek"]
+size = Vector3(2.5958252, 3.0911865, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ijvck"]
+font_size = 60
+font_color = Color(0, 1, 0, 1)
+
+[node name="NivelCasa" type="Node3D" node_paths=PackedStringArray("mutante", "porta_boss", "sensor_boss", "porta_saida", "sensor_vitoria", "label_win")]
 script = ExtResource("1_ufdyn")
 mutante = NodePath("Mutante")
 porta_boss = NodePath("NavigationRegion3D/Arquitetura/Porta6")
-sensor = NodePath("SensorBoss")
+sensor_boss = NodePath("SensorBoss")
+porta_saida = NodePath("NavigationRegion3D/Arquitetura/Porta7")
+sensor_vitoria = NodePath("SensorVitoria")
+label_win = NodePath("Interface/LabelWin")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
@@ -99,7 +110,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera3"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.212322, 0.40472257, -31.687529)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.739672, 0.40472257, -31.687529)
 shape = SubResource("BoxShape3D_r6nfi")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera3"]
@@ -112,7 +123,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera4"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.29683065, 0.37230623, -0.78862953)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4132657, 0.37230623, -0.78862953)
 shape = SubResource("BoxShape3D_0oo2q")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera4"]
@@ -125,7 +136,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera5"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.597947, 0.37230623, -17.403925)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.597947, 0.37230623, -17.536276)
 shape = SubResource("BoxShape3D_87kbg")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera5"]
@@ -138,7 +149,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera6"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.154342, 0.37230623, -41.87142)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.122365, 0.37230623, -41.87142)
 shape = SubResource("BoxShape3D_ufdyn")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera6"]
@@ -177,7 +188,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera9"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5537071, 0.37230623, -39.98617)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5537071, 0.37230623, -39.95562)
 shape = SubResource("BoxShape3D_27raq")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera9"]
@@ -190,7 +201,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera10"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 33.718628, 0.37230623, -96.492065)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 33.61141, 0.37230623, -96.492065)
 shape = SubResource("BoxShape3D_27raq")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera10"]
@@ -203,7 +214,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera11"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.3236847, 0.40472257, -2.6290035)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.8519497, 0.40472257, -2.6290035)
 shape = SubResource("BoxShape3D_rdr17")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera11"]
@@ -216,7 +227,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera12"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.928732, 0.40472257, -3.020298)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.275447, 0.40472257, -3.020298)
 shape = SubResource("BoxShape3D_ku7aw")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera12"]
@@ -229,7 +240,7 @@ script = ExtResource("1_y2j4s")
 camera_alvo = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SistemasDeCamera/Camera13"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.648272, 0.40472257, 4.5674505)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.232902, 0.40472257, 4.5674505)
 shape = SubResource("BoxShape3D_8ugn5")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera13"]
@@ -287,8 +298,8 @@ size = Vector3(0.5, 4, 36.45929)
 material = ExtResource("3_jiefh")
 
 [node name="ParedeMestra 94" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -20.5)
-size = Vector3(0.5, 4, 16)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.3642578, 0, -20.5)
+size = Vector3(0.5, 4, 17.271484)
 material = ExtResource("3_jiefh")
 
 [node name="ParedeMestra 95" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
@@ -297,8 +308,8 @@ size = Vector3(0.5, 4, 36.18994)
 material = ExtResource("3_jiefh")
 
 [node name="ParedeMestra 97" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.549804, 0, 2.5)
-size = Vector3(0.5, 4, 26.90039)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.8630366, 0, 2.5)
+size = Vector3(0.5, 4, 28.273926)
 material = ExtResource("3_jiefh")
 
 [node name="ParedeMestra 92" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
@@ -351,6 +362,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0794983, 1.2, 17.00778)
 operation = 2
 size = Vector3(1.6516724, 2.2, 2)
 
+[node name="Porta7" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2815657, 1.6409056, -10.005402)
+size = Vector3(2.4677372, 3.0414796, 0.58117676)
+material = ExtResource("5_27raq")
+
 [node name="SensorBoss" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.797934, 6.407472, 12.680772)
 
@@ -358,11 +374,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.797934, 6.407472, 12.680772
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48681164, -5.4317913, -2.2990675)
 shape = SubResource("BoxShape3D_o36db")
 
+[node name="SensorVitoria" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SensorVitoria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.219125, 1.9719899, -10.10353)
+shape = SubResource("BoxShape3D_rkrek")
+
 [node name="SMG" parent="." instance=ExtResource("4_8agmt")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -6.178245, 0.50774884, 18.306517)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.85746145, 0.50774884, -5.8190928)
 
 [node name="Player" parent="." instance=ExtResource("2_2pnjn")]
-transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -2.328895, 0.4373486, 16.833807)
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.7502427, 0.4373486, -4.6345043)
+vida_maxima = 200
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -381,17 +404,32 @@ grow_horizontal = 0
 grow_vertical = 0
 value = 100.0
 
+[node name="LabelWin" type="Label" parent="Interface"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -41.5
+offset_right = 104.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Vítoria!"
+label_settings = SubResource("LabelSettings_ijvck")
+
 [node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16.629282, 0.30327666, 16.532036)
-velocidade = 0.5
-dano_ataque = 1
-vida = 500
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7.7907543, 0.30327666, -2.2916164)
+velocidade = 0.8
+dano_ataque = 5
 
 [node name="Mutante" parent="." node_paths=PackedStringArray("porta_boss") instance=ExtResource("7_r6nfi")]
 transform = Transform3D(-0.045281287, 0, 0.39742875, 0, 0.4, 0, -0.39742875, 0, -0.045281287, 13.921835, 0.41034058, 16.115295)
 velocidade_normal = 3.5
 velocidade_furia = 6.0
-dano_ataque = 1
+dano_ataque = 20
 vida_maxima = 500
 tempo_entre_ataques = 2.0
 distancia_ataque = 2.5
@@ -405,6 +443,11 @@ tipo_municao = "Shotgun"
 stream = ExtResource("11_27raq")
 volume_db = 7.0
 autoplay = true
+
+[node name="Saida" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.177137, 3.8186402, -9.681516)
+text = "Saída"
+font_size = 100
 
 [connection signal="body_entered" from="SistemasDeCamera/Camera1" to="SistemasDeCamera/Camera1" method="_on_body_entered"]
 [connection signal="body_entered" from="SistemasDeCamera/Camera2" to="SistemasDeCamera/Camera2" method="_on_body_entered"]

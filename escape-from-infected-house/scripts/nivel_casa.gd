@@ -1,41 +1,64 @@
-extends Node3D # Ou Node3D, CSGCombiner3D, dependendo do seu nó raiz
-@export var mutante : CharacterBody3D
+extends Node3D
+
+# --- REFERÊNCIAS ---
+@export var mutante : CharacterBody3D  # Já usávamos para a armadilha, vamos usar para a vitória também
 @export var porta_boss : CSGBox3D
-@export var sensor : Area3D
-@onready var musica_player = $MusicaFundo
+@export var sensor_boss : Area3D
+
+# --- REFERÊNCIAS DA VITÓRIA ---
+@export var porta_saida : CSGBox3D     
+@export var sensor_vitoria : Area3D    
+@export var label_win : Label          
+
+var pode_sair = false
 
 func _ready():
-	# Conecta o sinal do sensor via código (ou você pode fazer pela aba Node)
-	if sensor:
-		sensor.body_entered.connect(_on_sensor_entrou)
+	# Configuração da Armadilha do Boss
+	if sensor_boss:
+		sensor_boss.body_entered.connect(_on_sensor_boss_entrou)
+	
+	# Configuração da Vitória (AGORA LIGADO AO MUTANTE)
+	if mutante:
+		# Conecta o sinal que acabamos de criar no Mutante
+		mutante.mutante_morreu.connect(_on_mutante_morreu)
+	
+	if sensor_vitoria:
+		sensor_vitoria.body_entered.connect(_on_sensor_vitoria_entrou)
 
-func _on_sensor_entrou(body):
-	# Verifica se foi o Player que entrou
+# --- LÓGICA DO BOSS ---
+func _on_sensor_boss_entrou(body):
 	if body.name == "Player":
-		print("Armadilha ativada!")
-		
-		# 1. Fecha a porta
-		# No Godot CSG, se você esconder a caixa de subtração, o buraco "fecha"
-		if porta_boss:
-			porta_boss.visible = false 
-			# Se quiser garantir que a colisão feche também, force a atualização (geralmente automático no CSG)
-		
-		# 2. Acorda o Boss
-		if mutante and mutante.has_method("acordar"):
-			mutante.acordar()
-		
-		# 3. Destroi o sensor para não ativar de novo
-		if sensor:
-			sensor.queue_free()
+		if porta_boss: porta_boss.visible = false 
+		if mutante and mutante.has_method("acordar"): mutante.acordar()
+		if sensor_boss: sensor_boss.queue_free()
 
-func _process(delta):
-	# Verifica se apertou o botão definido no Input Map
-	if Input.is_action_just_pressed("mutar_musica"):
-		# Inverte o estado de "Playing" (Se está tocando, pausa. Se pausado, toca)
-		musica_player.stream_paused = not musica_player.stream_paused
-		
-		# Feedback no console para você saber que funcionou
-		if musica_player.stream_paused:
-			print("Música Mutada (Pausada)")
+# --- LÓGICA DA VITÓRIA ---
+
+# Chamado automaticamente quando o MUTANTE morre
+func _on_mutante_morreu():
+	print("O Boss morreu! Porta de saída destrancada!")
+	pode_sair = true
+	
+	# Muda a cor da porta para Branco Metálico
+	if porta_saida:
+		var material = StandardMaterial3D.new()
+		material.albedo_color = Color.WHITE
+		material.metallic = 1.0
+		material.roughness = 0.2
+		porta_saida.material_override = material
+
+# Chamado quando o player encosta na porta
+func _on_sensor_vitoria_entrou(body):
+	if body.name == "Player":
+		if pode_sair:
+			ganhar_jogo()
 		else:
-			print("Música Desmutada")
+			print("A porta está trancada! Derrote o Boss primeiro.")
+
+func ganhar_jogo():
+	print("VITÓRIA!")
+	if label_win: label_win.visible = true
+	
+	# Espera 3 segundos e troca para os créditos
+	await get_tree().create_timer(5.0).timeout
+	get_tree().change_scene_to_file("res://cenas/tela_creditos.tscn")
