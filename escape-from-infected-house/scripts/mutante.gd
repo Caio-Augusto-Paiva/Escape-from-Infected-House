@@ -5,6 +5,8 @@ extends CharacterBody3D
 @export var velocidade_furia : float = 6.0 # Corre muito quando está bravo
 @export var dano_ataque : int = 40 # Dano massivo
 @export var vida_maxima : int = 500 # Tanque de guerra
+@export var tempo_entre_ataques : float = 2.0 # Boss é lento mas bate forte
+@export var distancia_ataque : float = 2.5 # Alcance maior por ser gigante
 
 var vida_atual = 0
 var gravidade = 9.8
@@ -17,8 +19,6 @@ var esta_em_furia = false
 
 var player = null
 var cooldown_ataque = 0.0
-var tempo_entre_ataques = 2.0 # Boss é lento mas bate forte
-var distancia_ataque = 2.5 # Alcance maior por ser gigante
 var tempo_animacao_ataque = 0.0  # Tempo restante da animação de ataque
 var dano_aplicado = false  # Flag para aplicar dano uma única vez por ataque
 

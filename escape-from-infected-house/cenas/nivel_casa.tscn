@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://kw1gjgfi56b4"]
+[gd_scene load_steps=25 format=3 uid="uid://kw1gjgfi56b4"]
 
-[ext_resource type="Script" uid="uid://b8ll2lpc5tn3j" path="res://cenas/nivel_casa.gd" id="1_ufdyn"]
+[ext_resource type="Script" uid="uid://b8ll2lpc5tn3j" path="res://scripts/nivel_casa.gd" id="1_ufdyn"]
 [ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
 [ext_resource type="PackedScene" uid="uid://dchn0obba5lso" path="res://cenas/player.tscn" id="2_2pnjn"]
 [ext_resource type="Material" uid="uid://dro3hkxmtl4gj" path="res://Materiais/Mat_PisoMarmore.tres" id="2_or7qo"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b2tn5ku4fwr4i" path="res://cenas/tela_game_over.tscn" id="7_27raq"]
 [ext_resource type="PackedScene" uid="uid://b1526cgvjviqw" path="res://cenas/mutante.tscn" id="7_r6nfi"]
 [ext_resource type="PackedScene" uid="uid://clbdl2iowka0l" path="res://cenas/caixa_municao.tscn" id="8_0oo2q"]
-[ext_resource type="Script" uid="uid://bg71mjkquv63x" path="res://scripts/spawn_zumbi.gd" id="8_spawn"]
 [ext_resource type="AudioStream" uid="uid://b4lywolnjk2id" path="res://Audio/SCP-x4x.mp3" id="11_27raq"]
 
 [sub_resource type="Environment" id="Environment_jiefh"]
@@ -49,11 +48,8 @@ size = Vector3(7.396645, 0.97101593, 8.560126)
 size = Vector3(10.232243, 0.97101593, 8.560126)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2pnjn"]
-vertices = PackedVector3Array(-9.5, 0.4, -9.5, -9.5, 0.4, 9.5, 9.5, 0.4, 9.5, 9.5, 0.4, -9.5)
+vertices = PackedVector3Array(-20.5, 0.4, -10.3, -20.5, 0.4, 20, 15.5, 0.4, 20, 15.5, 0.4, -10.3)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o36db"]
-size = Vector3(3.426056, 1.3093262, 4.006897)
 
 [node name="NivelCasa" type="Node3D"]
 script = ExtResource("1_ufdyn")
@@ -217,7 +213,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9
 shape = SubResource("BoxShape3D_ku7aw")
 
 [node name="Camera3D" type="Camera3D" parent="SistemasDeCamera/Camera12"]
-transform = Transform3D(0.64278764, 0.38302222, -0.66341394, 0, 0.8660254, 0.5, 0.76604444, -0.32139382, 0.5566704, -8.703226, 3.3310122, 0.3538208)
+transform = Transform3D(0.64278764, 0.38302222, -0.66341394, 0, 0.8660254, 0.5, 0.76604444, -0.32139382, 0.5566704, -7.967551, 3.3310122, 0.3538208)
 fov = 90.0
 
 [node name="Camera13" type="Area3D" parent="SistemasDeCamera" node_paths=PackedStringArray("camera_alvo")]
@@ -304,8 +300,8 @@ size = Vector3(0.5, 4, 12)
 material = ExtResource("3_jiefh")
 
 [node name="ParedeMestra2" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5.500122)
-size = Vector3(0.5, 4, 30.499268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.550232, 0, -5.500122)
+size = Vector3(1.6004639, 4, 30.499268)
 material = ExtResource("3_jiefh")
 
 [node name="ParedeMestra3" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura/ParedeMestra"]
@@ -344,15 +340,15 @@ operation = 2
 size = Vector3(2, 2.2, 2)
 
 [node name="Porta6" type="CSGBox3D" parent="NavigationRegion3D/Arquitetura"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.2, 17.00778)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.077759, 1.2, 17.00778)
 operation = 2
-size = Vector3(2, 2.2, 2)
+size = Vector3(1.6481934, 2.2, 2)
 
 [node name="SMG" parent="." instance=ExtResource("4_8agmt")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.14648667, 0.50774884, -1.649047)
 
 [node name="Player" parent="." instance=ExtResource("2_2pnjn")]
-transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -1.8534646, 0.4373486, -6.853676)
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0.5422611, 0.4373486, -3.8504562)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -372,19 +368,17 @@ grow_vertical = 0
 value = 100.0
 
 [node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.130451, 0.30327666, -1.8051324)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6.8996124, 0.30327666, -1.8051324)
+dano_ataque = 1
 
 [node name="Mutante" parent="." instance=ExtResource("7_r6nfi")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 15.261364, 0.41034058, 8.284172)
-
-[node name="SpawnerZumbi" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7494016, 0, -3.1297302)
-script = ExtResource("8_spawn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnerZumbi"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7687931, 1.0862849, 1.6433246)
-shape = SubResource("BoxShape3D_o36db")
-disabled = true
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 13.921835, 0.41034058, 18.855953)
+velocidade_normal = 3.5
+velocidade_furia = 6.0
+dano_ataque = 1
+vida_maxima = 500
+tempo_entre_ataques = 2.0
+distancia_ataque = 2.5
 
 [node name="caixa_municao" parent="." instance=ExtResource("8_0oo2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.584026, 0.6544, -4.761767)

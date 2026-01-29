@@ -7,11 +7,14 @@ var cena_do_jogo = "res://NivelCasa.tscn"
 @onready var menu_dificuldade = $MenuDificuldade
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	iniciar_jogo("normal")
 	
-	# Garante que o jogo comece com o menu principal visível e o outro escondido
-	menu_principal.visible = true
-	menu_dificuldade.visible = false
+	# comentado para deixar os testes mais rápidos
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#
+	## Garante que o jogo comece com o menu principal visível e o outro escondido
+	#menu_principal.visible = true
+	#menu_dificuldade.visible = false
 
 # --- BOTÕES DO MENU PRINCIPAL ---
 

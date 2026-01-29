@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckh34t8w2spw7"]
 
-[ext_resource type="Script" uid="uid://b2hg7ord6gfmo" path="res://menu_inicial.gd" id="1_5y2fb"]
+[ext_resource type="Script" uid="uid://b2hg7ord6gfmo" path="res://scripts/menu_inicial.gd" id="1_5y2fb"]
 [ext_resource type="Texture2D" uid="uid://l2a2gwy2eqgh" path="res://Artes/CapaDoJogo.png" id="2_omb8n"]
 
 [node name="MenuInicial" type="Control"]

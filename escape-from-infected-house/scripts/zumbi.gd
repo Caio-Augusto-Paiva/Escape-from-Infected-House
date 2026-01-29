@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 # --- STATUS DO ZUMBI ---
-var velocidade : float = 2.0
-var dano_ataque : int = 15
-var vida : int = 100
-var distancia_ataque : float = 2
+@export var velocidade : float = 2.0
+@export var dano_ataque : int = 15
+@export var vida : int = 100
+@export var distancia_ataque : float = 2
+@export var tempo_entre_ataques = 1.5 # Segundos
 
 var gravidade = 9.8
 
@@ -30,7 +31,6 @@ var sons_gemido = [
 
 var player = null
 var cooldown_ataque = 0.0
-var tempo_entre_ataques = 1.5 # Segundos
 var tempo_animacao_ataque = 0.0  # Tempo restante da animação de ataque
 var dano_aplicado = false  # Flag para aplicar dano uma única vez por ataque
 

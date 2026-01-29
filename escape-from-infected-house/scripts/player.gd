@@ -6,8 +6,8 @@ extends CharacterBody3D
 var gravidade = 9.8
 
 # --- SISTEMA DE VIDA ---
-var vida_maxima = 100
-var vida_atual = 100
+@export var vida_maxima = 100
+var vida_atual = vida_maxima
 
 @onready var barra_vida = get_tree().root.find_child("ProgressBar", true, false)
 @onready var tela_game_over = get_tree().root.find_child("TelaGameOver", true, false)
