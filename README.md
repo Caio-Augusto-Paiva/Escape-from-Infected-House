@@ -32,3 +32,10 @@ https://www.mixamo.com/#/?page=1&query=mutant++attack&type=Motion%2CMotionPack -
 https://sketchfab.com/3d-models/winchester-double-barrel-ps1-low-poly-62f00fd84c034faaaf99ce6789a94d80 -shotgun
 https://sketchfab.com/3d-models/low-poly-lebedev-pistol-91b067eeafa94e6e89736f5d46854d51 -pistol
 https://sketchfab.com/3d-models/low-poly-ump-45-a6a2df8bddf04f2eb7f4b14d2bd5ee8d -smg
+
+# Audio
+SCP-x4x (Mind Leech) https://incompetech.com/music/royalty-free/music.html -musica de fundo
+https://opengameart.org/node/81246 -zumbi
+
+# Imagens 
+Gemini AI - Tela (inicial creditos e game over)

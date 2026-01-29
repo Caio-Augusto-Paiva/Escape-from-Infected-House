@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2tn5ku4fwr4i"]
+
+[ext_resource type="Texture2D" uid="uid://cgwfhhryeybmd" path="res://Artes/GameOver.png" id="1_3gvb1"]
+[ext_resource type="Script" uid="uid://ccrveh4y8qqqe" path="res://scripts/tela_game_over.gd" id="1_534w6"]
+
+[node name="TelaGameOver" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_534w6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3gvb1")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Voltar ao Menu"
+
+[node name="BtnSair" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sair do Jogo"
+
+[connection signal="pressed" from="VBoxContainer/BtnMenu" to="." method="_on_btn_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]

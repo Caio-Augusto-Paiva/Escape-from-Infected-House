@@ -4,7 +4,7 @@ extends CharacterBody3D
 var velocidade : float = 2.0
 var dano_ataque : int = 15
 var vida : int = 100
-var distancia_ataque : float = 1
+var distancia_ataque : float = 2
 
 var gravidade = 9.8
 
@@ -21,6 +21,13 @@ var gravidade = 9.8
 # Acesso à máquina de estados para dar "Play" em ataques
 @onready var state_machine = anim_tree.get("parameters/playback")
 
+@onready var audio_gemido = $AudioGemido
+@onready var timer_gemido = $TimerGemido
+
+var sons_gemido = [
+	preload("res://Audio/undead-2.ogg"),
+]
+
 var player = null
 var cooldown_ataque = 0.0
 var tempo_entre_ataques = 1.5 # Segundos
@@ -34,6 +41,8 @@ func _ready():
 	# Configurações de precisão do GPS
 	agente_nav.path_desired_distance = 1.0
 	agente_nav.target_desired_distance = 1.0
+	timer_gemido.timeout.connect(_on_timer_gemido_timeout)
+	timer_gemido.start(randf_range(2.0, 5.0))
 	
 	# Garante que a AnimationTree esteja ligada
 	if anim_tree:
@@ -41,6 +50,8 @@ func _ready():
 		# Começa no estado idle
 		if state_machine:
 			state_machine.travel("idle")
+
+	
 
 func _physics_process(delta):
 	# 1. Gravidade
@@ -140,8 +151,11 @@ func receber_dano(quantidade):
 
 func morrer():
 	print("Zumbi Morreu!")
+	audio_gemido.stop() # Para de gemer se morrer
+	timer_gemido.stop()
 	if dropar_municao and cena_caixa_municao:
 		var caixa = cena_caixa_municao.instantiate()
+	
 		if caixa:
 			caixa.global_position = global_position
 			# Configura tipo e quantidade, se o script da caixa tiver essas variáveis
@@ -153,3 +167,21 @@ func morrer():
 			get_tree().current_scene.add_child(caixa)
 	# Opcional: Tocar animação de morte antes de sumir
 	queue_free()
+	
+func _on_timer_gemido_timeout():
+	# 1. Verifica se o zumbi ainda está vivo (opcional, mas bom pra evitar bugs)
+	if vida <= 0: return
+	
+	# 2. Escolhe um som aleatório da lista
+	if sons_gemido.size() > 0:
+		audio_gemido.stream = sons_gemido.pick_random()
+		
+		# TRUQUE DE MESTRE: Variar o Pitch (Agudez)
+		# Isso faz o mesmo som parecer diferente (mais grave ou agudo)
+		audio_gemido.pitch_scale = randf_range(0.8, 1.2)
+		
+		audio_gemido.play()
+	
+	# 3. Reinicia o timer com um novo tempo aleatório (entre 3 e 8 segundos)
+	timer_gemido.start(randf_range(3.0, 8.0))
+	

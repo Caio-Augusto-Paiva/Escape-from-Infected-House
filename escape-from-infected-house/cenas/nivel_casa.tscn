@@ -1,14 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://kw1gjgfi56b4"]
+[gd_scene load_steps=27 format=3 uid="uid://kw1gjgfi56b4"]
 
+[ext_resource type="Script" uid="uid://b8ll2lpc5tn3j" path="res://cenas/nivel_casa.gd" id="1_ufdyn"]
 [ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
 [ext_resource type="PackedScene" uid="uid://dchn0obba5lso" path="res://cenas/player.tscn" id="2_2pnjn"]
 [ext_resource type="Material" uid="uid://dro3hkxmtl4gj" path="res://Materiais/Mat_PisoMarmore.tres" id="2_or7qo"]
 [ext_resource type="PackedScene" uid="uid://dld1y6ssudvmk" path="res://cenas/zumbi.tscn" id="3_fwkce"]
 [ext_resource type="Material" uid="uid://e6n3l7yef155" path="res://Materiais/Mat_ParedeTijolos.tres" id="3_jiefh"]
 [ext_resource type="PackedScene" uid="uid://bxbht5ndis2s3" path="res://cenas/item_arma.tscn" id="4_8agmt"]
+[ext_resource type="PackedScene" uid="uid://b2tn5ku4fwr4i" path="res://cenas/tela_game_over.tscn" id="7_27raq"]
 [ext_resource type="PackedScene" uid="uid://b1526cgvjviqw" path="res://cenas/mutante.tscn" id="7_r6nfi"]
 [ext_resource type="PackedScene" uid="uid://clbdl2iowka0l" path="res://cenas/caixa_municao.tscn" id="8_0oo2q"]
 [ext_resource type="Script" uid="uid://bg71mjkquv63x" path="res://scripts/spawn_zumbi.gd" id="8_spawn"]
+[ext_resource type="AudioStream" uid="uid://b4lywolnjk2id" path="res://Audio/SCP-x4x.mp3" id="11_27raq"]
 
 [sub_resource type="Environment" id="Environment_jiefh"]
 
@@ -53,6 +56,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 size = Vector3(3.426056, 1.3093262, 4.006897)
 
 [node name="NivelCasa" type="Node3D"]
+script = ExtResource("1_ufdyn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
@@ -352,22 +356,20 @@ transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -1.8534646, 0.437348
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
+[node name="TelaGameOver" parent="Interface" instance=ExtResource("7_27raq")]
+visible = false
+
 [node name="ProgressBar" type="ProgressBar" parent="Interface"]
 anchors_preset = -1
-anchor_left = -0.018000001
-anchor_right = 0.11100001
-anchor_bottom = 0.12900001
-offset_left = 60.736
-offset_top = 42.0
-offset_right = -30.87201
-offset_bottom = -14.592003
+anchor_left = 0.92
+anchor_top = 0.88400006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.8399658
+offset_top = -2.8320313
+grow_horizontal = 0
+grow_vertical = 0
 value = 100.0
-
-[node name="Label" type="Label" parent="Interface"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "GAME OVER"
 
 [node name="Zumbi" parent="." instance=ExtResource("3_fwkce")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.130451, 0.30327666, -1.8051324)
@@ -387,6 +389,11 @@ disabled = true
 [node name="caixa_municao" parent="." instance=ExtResource("8_0oo2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.584026, 0.6544, -4.761767)
 tipo_municao = "Shotgun"
+
+[node name="MusicaFundo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_27raq")
+volume_db = 7.0
+autoplay = true
 
 [connection signal="body_entered" from="SistemasDeCamera/Camera1" to="SistemasDeCamera/Camera1" method="_on_body_entered"]
 [connection signal="body_entered" from="SistemasDeCamera/Camera2" to="SistemasDeCamera/Camera2" method="_on_body_entered"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://bftiw3c751pn5"]
+
+[ext_resource type="Script" uid="uid://dhmy6cmv52snj" path="res://scripts/tela_creditos.gd" id="1_s1etw"]
+[ext_resource type="Texture2D" uid="uid://rw2fmdv66yo6" path="res://Artes/TelaCreditos.png" id="2_s1etw"]
+
+[node name="TelaCreditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s1etw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s1etw")
+expand_mode = 1
+
+[node name="TextoRolante" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27800003
+anchor_top = 0.441
+anchor_right = 0.72200006
+anchor_bottom = 0.89400005
+offset_left = -204.25604
+offset_top = 37.231995
+offset_right = 203.25592
+offset_bottom = 806.688
+grow_horizontal = 2
+grow_vertical = 2
+text = "#Programacao
+Caio Augusto
+Felipe Gotelip
+
+# Texturas
+https://www.mixamo.com/#/?page=1&query=&type=Character -mutante
+https://www.mixamo.com/#/?page=1&query=zombie&type=Character - zombie
+https://www.mixamo.com/#/?page=1&query=swat&type=Character - personagem
+
+https://ambientcg.com/view?id=Bricks066 -parede
+https://ambientcg.com/view?id=Marble012 -chao
+https://ambientcg.com/view?id=WoodFloor064 -madeira
+https://ambientcg.com/view?id=CorrugatedSteel007B -metal
+
+# Animaçoes 
+Zombie :
+https://www.mixamo.com/#/?page=1&query=zombie+walk&type=Motion%2CMotionPack -walk
+https://www.mixamo.com/#/?page=1&query=zombie+attack&type=Motion%2CMotionPack -attack
+https://www.mixamo.com/#/?page=1&query=zombie+iddle&type=Motion%2CMotionPack -idle
+
+Player:
+https://www.mixamo.com/#/?page=1&query=rifle+idle - idle
+https://www.mixamo.com/#/?page=1&query=rifle+run -run
+https://www.mixamo.com/#/?page=1&query=shooting -shooting
+
+Mutant:
+https://www.mixamo.com/#/?page=1&query=mutant+&type=Motion%2CMotionPack -idle
+https://www.mixamo.com/#/?page=1&query=mutant+&type=Motion%2CMotionPack -run
+https://www.mixamo.com/#/?page=1&query=mutant++attack&type=Motion%2CMotionPack -attack
+
+# Armas
+https://sketchfab.com/3d-models/winchester-double-barrel-ps1-low-poly-62f00fd84c034faaaf99ce6789a94d80 -shotgun
+https://sketchfab.com/3d-models/low-poly-lebedev-pistol-91b067eeafa94e6e89736f5d46854d51 -pistol
+https://sketchfab.com/3d-models/low-poly-ump-45-a6a2df8bddf04f2eb7f4b14d2bd5ee8d -smg
+
+# Audio
+SCP-x4x (Mind Leech) https://incompetech.com/music/royalty-free/music.html -musica de fundo
+https://opengameart.org/node/81246 -zumbi
+
+# Imagens 
+Gemini AI - Tela (inicial creditos e game over)"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -59.0
+offset_right = -15.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Voltar ao Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
