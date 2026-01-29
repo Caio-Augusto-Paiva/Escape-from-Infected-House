@@ -13,6 +13,7 @@ var vida_atual = vida_maxima
 @onready var tela_game_over = get_tree().root.find_child("TelaGameOver", true, false)
 
 # --- SISTEMA DE ARMAS ---
+@export var bala_cena : PackedScene
 @onready var raycast = $Mao/RayCast3D
 var inventario = ["Pistola"] 
 var arma_atual_index = 0
@@ -159,32 +160,28 @@ func gerenciar_tiro():
 	return false
 
 func atirar(nome, stats):
-	raycast.target_position = Vector3(0, 0, -stats["alcance_maximo"])
-	raycast.force_raycast_update()
-	
+	# Toca animação (mantido do seu código original)
 	if state_machine:
 		state_machine.travel("Shoot")
 		tempo_animacao_tiro = 0.4
 	
-	print("Atirou com ", nome, " - Raycast colidindo: ", raycast.is_colliding())
+	# Verifica se arrastou a cena da bala no Inspector
+	if not bala_cena:
+		print("ERRO: Esqueceu de colocar a cena da bala no Inspector!")
+		return
+
+	var nova_bala = bala_cena.instantiate()
 	
-	if raycast.is_colliding():
-		var objeto = raycast.get_collider()
-		print("Raycast acertou: ", objeto.name)
-		
-		if objeto.has_method("receber_dano"):
-			var ponto = raycast.get_collision_point()
-			var dano_final = stats["dano"]
-			
-			if nome == "Shotgun":
-				var dist = global_position.distance_to(ponto)
-				var fator = clamp(1.0 - (dist / stats["alcance_maximo"]), 0.0, 1.0)
-				dano_final = stats["dano_base"] * fator
-			
-			print("Aplicando ", dano_final, " de dano em ", objeto.name)
-			objeto.receber_dano(dano_final)
-		else:
-			print("Objeto ", objeto.name, " NÃO tem método receber_dano")
+	# Define o dano
+	nova_bala.dano = stats["dano"] if nome != "Shotgun" else stats["dano_base"]
+	
+	# Adiciona na cena principal
+	get_parent().add_child(nova_bala)
+	
+	# --- CORREÇÃO AQUI ---
+	# Copia só posição e rotação. Ignora a escala minúscula do Raycast.
+	nova_bala.global_position = raycast.global_position
+	nova_bala.global_rotation = raycast.global_rotation
 
 # --- VIDA E COLETA ---
 

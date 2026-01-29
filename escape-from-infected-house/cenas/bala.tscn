@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc0a3bfr4req6"]
+
+[ext_resource type="Script" uid="uid://c5dbld4orl0t" path="res://scripts/bala.gd" id="1_mk5qm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mk5qm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk5qm"]
+albedo_color = Color(0.5609549, 0.5609549, 0.5609549, 1)
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ujw1x"]
+radius = 0.028525392
+
+[node name="Bala" type="Area3D"]
+script = ExtResource("1_mk5qm")
+velocidade = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("SphereMesh_mk5qm")
+surface_material_override/0 = SubResource("StandardMaterial3D_mk5qm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.29645824, 0, -0.9550458, 0, 1, 0, 0.9550458, 0, -0.29645824, 0, -3.7252903e-09, 0)
+shape = SubResource("SphereShape3D_ujw1x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

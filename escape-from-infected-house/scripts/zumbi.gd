@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var tempo_entre_ataques = 1.5 # Segundos
 
 var gravidade = 9.8
+var empurrao_knockback = Vector3.ZERO # <--- NOVO: Vetor para guardar a força do impacto
 
 # --- DROP DE MUNIÇÃO (CONFIGURÁVEL NO INSPECTOR) ---
 @export var dropar_municao: bool = false
@@ -58,33 +59,35 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravidade * delta
 	
-	# Variável para controlar a intenção de animação
+	# Se houver força de empurrão, ela diminui com o tempo (atrito simulado)
+	if empurrao_knockback.length() > 0.1:
+		empurrao_knockback = empurrao_knockback.lerp(Vector3.ZERO, 5 * delta)
+		# Adiciona o empurrão à velocidade atual
+		velocity += empurrao_knockback
+	
 	var esta_perseguindo = false
 	
-	# 2. Comportamento (IA)
 	if player:
 		var distancia = global_position.distance_to(player.global_position)
 		
-		# LÓGICA DE MOVIMENTO
 		if distancia > distancia_ataque:
-			esta_perseguindo = true # Marcamos que a intenção é andar
+			esta_perseguindo = true
 			
+			# Lógica de Navegação original
 			agente_nav.target_position = player.global_position
 			var proxima_pos = agente_nav.get_next_path_position()
 			var direcao = (proxima_pos - global_position).normalized()
 			direcao.y = 0 
 			
-			# Interpolação (lerp) ajuda a suavizar mudanças bruscas de direção
-			velocity.x = lerp(velocity.x, direcao.x * velocidade, 10.0 * delta)
-			velocity.z = lerp(velocity.z, direcao.z * velocidade, 10.0 * delta)
+			# A interpolação original já funciona bem
+			# Nota: Usamos move_toward no eixo Y para manter a gravidade estável
+			var velocidade_alvo = direcao * velocidade
+			velocity.x = lerp(velocity.x, velocidade_alvo.x, 10.0 * delta)
+			velocity.z = lerp(velocity.z, velocidade_alvo.z, 10.0 * delta)
 			
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-		
-		# LÓGICA DE PARADA / ATAQUE
 		else:
-			esta_perseguindo = false # Marcamos que ele deve parar
-			
-			# Freio suave ao chegar perto
+			esta_perseguindo = false
 			velocity.x = move_toward(velocity.x, 0, velocidade * delta * 5)
 			velocity.z = move_toward(velocity.z, 0, velocidade * delta * 5)
 			
@@ -94,7 +97,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# --- GERENCIAMENTO DE ANIMAÇÃO E COOLDOWNS ---
-	
 	if cooldown_ataque > 0:
 		cooldown_ataque -= delta
 	
@@ -141,10 +143,20 @@ func atacar():
 	if state_machine:
 		state_machine.travel("Attack")
 
-func receber_dano(quantidade):
+func receber_dano(quantidade, posicao_impacto = Vector3.ZERO):
 	vida -= quantidade
-	print(">>> ZUMBI RECEBEU DANO! <<<")
-	print("Zumbi sofreu ", quantidade, " de dano. Vida restante: ", vida)
+	print("Zumbi sofreu ", quantidade, " de dano.")
+	
+	# --- Lógica de Impulso Dinâmico ---
+	if posicao_impacto != Vector3.ZERO:
+		var direcao_empurrao = (global_position - posicao_impacto).normalized()
+		direcao_empurrao.y = 0.1 # Zumbi é leve, então sobe um pouco mais (pulo)
+		
+		# Fator 0.5 = Ele é 10x mais leve que o Mutante (que usamos 0.05)
+		var fator_peso = 0.1 
+		
+		# O empurrão agora depende do Dano (quantidade)
+		empurrao_knockback = direcao_empurrao * quantidade * fator_peso
 	
 	if vida <= 0:
 		morrer()
