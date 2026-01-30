@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-# --- STATUS DE BOSS ---
 @export var velocidade_normal : float = 3.5
 @export var velocidade_furia : float = 6.0 
 @export var dano_ataque : int = 40 
@@ -8,15 +7,13 @@ extends CharacterBody3D
 @export var tempo_entre_ataques : float = 2.0 
 @export var distancia_ataque : float = 2.5 
 
-# --- FÍSICA (NOVO) ---
 var empurrao_knockback = Vector3.ZERO 
-@export var forca_empurrao_objetos : float = 10.0 # Boss é muito forte (Zumbi era 2.0)
+@export var forca_empurrao_objetos : float = 10.0
 
 var vida_atual = 0
 var gravidade = 9.8
 var esta_em_furia = false
 
-# --- REFERÊNCIAS ---
 @onready var agente_nav = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
@@ -31,7 +28,6 @@ signal mutante_morreu
 
 func _ready():
 	add_to_group("Inimigos")
-	# Configura vida baseada na dificuldade
 	vida_maxima = Global.get_mutante_vida()
 	vida_atual = vida_maxima
 	player = get_tree().root.find_child("Player", true, false)
@@ -44,15 +40,12 @@ func _ready():
 	print("BOSS SPAWNED: Mutante entrou na arena mas está dormindo!")
 
 func _physics_process(delta):
-	# Se estiver dormindo, não faz nada físico
 	if esta_dormindo:
 		return 
 		
-	# 1. Gravidade
 	if not is_on_floor():
 		velocity.y -= gravidade * delta
 	
-	# 2. IA de Perseguição
 	if player:
 		var distancia = global_position.distance_to(player.global_position)
 		
@@ -69,30 +62,25 @@ func _physics_process(delta):
 			
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		else:
-			# Para perto do player
 			velocity.x = move_toward(velocity.x, 0, velocidade_normal * delta)
 			velocity.z = move_toward(velocity.z, 0, velocidade_normal * delta)
 			
 			if cooldown_ataque <= 0:
 				atacar()
 
-	# 3. Aplica o Knockback (Soma à velocidade de movimento)
 	if empurrao_knockback.length() > 0.1:
 		empurrao_knockback = empurrao_knockback.lerp(Vector3.ZERO, 5 * delta)
 		velocity += empurrao_knockback
 
 	move_and_slide()
 	
-	# 4. Interação Física com Objetos (Empurrar Caixas)
 	for i in get_slide_collision_count():
 		var colisao = get_slide_collision(i)
 		var objeto = colisao.get_collider()
 		
 		if objeto is RigidBody3D:
-			# O Boss empurra com muita força!
 			objeto.apply_central_impulse(-colisao.get_normal() * forca_empurrao_objetos * delta)
 	
-	# --- ATUALIZAÇÃO DE TIMERS E ANIMAÇÃO ---
 	atualizar_timers_e_animacao(delta)
 
 func atualizar_timers_e_animacao(delta):
@@ -107,7 +95,7 @@ func atualizar_timers_e_animacao(delta):
 				player.receber_dano(dano_ataque)
 		
 		if tempo_animacao_ataque <= 0 and state_machine:
-			state_machine.travel("idle") # Volta para idle após ataque
+			state_machine.travel("idle") 
 			
 	elif state_machine:
 		var estado_atual = state_machine.get_current_node()
@@ -127,20 +115,14 @@ func atacar():
 	dano_aplicado = false 
 	if state_machine: state_machine.travel("attack")
 
-# --- FUNÇÃO DE DANO ATUALIZADA COM FÍSICA ---
 func receber_dano(quantidade, posicao_impacto = Vector3.ZERO):
 	vida_atual -= quantidade
 	print("Mutante Vida: ", vida_atual)
-	
-	# Lógica de Impulso Dinâmico
+
 	if posicao_impacto != Vector3.ZERO:
 		var direcao_empurrao = (global_position - posicao_impacto).normalized()
 		direcao_empurrao.y = 0.1 
-		
-		# --- A MÁGICA ACONTECE AQUI ---
-		# Definimos um "fator de resistência" (quanto maior, menos ele voa)
-		# Mutante é pesado, então usamos um fator pequeno (ex: 0.05)
-		# Cálculo: Direção * Dano Recebido * Fator
+	
 		
 		var fator_peso = 0.05 
 		empurrao_knockback = direcao_empurrao * quantidade * fator_peso
@@ -154,11 +136,10 @@ func receber_dano(quantidade, posicao_impacto = Vector3.ZERO):
 func entrar_em_furia():
 	esta_em_furia = true
 	print("O BOSS FICOU VERMELHO DE RAIVA!")
-	# Dica Visual: Se quiser que ele fique vermelho mesmo
-	var mesh = find_child("MeshInstance3D", true, false) # Tenta achar a mesh
+	var mesh = find_child("MeshInstance3D", true, false)
 	if mesh:
 		var material = StandardMaterial3D.new()
-		material.albedo_color = Color(1, 0, 0) # Vermelho
+		material.albedo_color = Color(1, 0, 0) 
 		mesh.material_override = material
 
 func morrer():

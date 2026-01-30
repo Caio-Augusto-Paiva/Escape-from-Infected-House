@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1lqqr1f5hgiq"]
+[gd_scene load_steps=4 format=3 uid="uid://d1pvnc7i5doj"]
 
-[ext_resource type="Script" uid="uid://bg71mjkquv63x" path="res://scripts/spawn_zumbi.gd" id="1_pek48"]
+[ext_resource type="Script" path="res://scripts/spawn_zumbi.gd" id="1_pek48"]
 [ext_resource type="PackedScene" uid="uid://dld1y6ssudvmk" path="res://cenas/zumbi.tscn" id="2_iiumr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iiumr"]

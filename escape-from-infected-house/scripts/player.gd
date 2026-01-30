@@ -1,13 +1,11 @@
 extends CharacterBody3D
 
-# --- CONFIGURAÇÕES DE MOVIMENTO ---
 @export var velocidade_movimento : float = 10
 @export var velocidade_rotacao : float = 4.5
 @export var usar_mira_mouse : bool = true
 @export var assistencia_mira_zumbi : bool = true
 var gravidade = 9.8
 
-# --- SISTEMA DE VIDA ---
 @export var vida_maxima = 100
 var vida_atual = vida_maxima
 var tempo_regeneracao = 0.0
@@ -15,7 +13,6 @@ var tempo_regeneracao = 0.0
 @onready var barra_vida = get_tree().root.find_child("ProgressBar", true, false)
 @onready var tela_game_over = get_tree().root.find_child("TelaGameOver", true, false)
 
-# --- SISTEMA DE ARMAS ---
 @export var bala_cena : PackedScene
 @onready var raycast = $Mao/RayCast3D
 var inventario = ["Pistola"] 
@@ -47,26 +44,21 @@ var status_armas = {
 	"Shotgun": { "dano_base": 50, "cadencia": 1.2, "automatica": false, "alcance_maximo": 10 }
 }
 
-# --- REFERÊNCIAS VISUAIS DAS ARMAS ---
 @onready var vis_pistola = $"Ch15_nonPBR/Skeleton3D/BoneAttachment3D/Visual_Pistola"
 @onready var vis_smg = $"Ch15_nonPBR/Skeleton3D/BoneAttachment3D/Visual_SMG"
 @onready var vis_shotgun = $"Ch15_nonPBR/Skeleton3D/BoneAttachment3D/Visual_Shotgun"
 
-# --- HUD ---
 @onready var label_municao = $HUD_Municao/Label_Municao
 @onready var label_mensagem = $HUD_Municao/Label_Mensagem
 
-# --- SISTEMA DE ANIMAÇÃO ---
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
 
 func _ready():
-	# Inicialização do Raycast - não precisa reposicionar, usa a posição da cena
 	raycast.add_exception(self)
 	raycast.enabled = true
 	
-	# Inicialização da UI
-	vida_atual = vida_maxima # Força vida cheia no inicio
+	vida_atual = vida_maxima
 	if barra_vida:
 		barra_vida.max_value = vida_maxima
 		barra_vida.value = vida_atual
@@ -74,19 +66,15 @@ func _ready():
 	if label_mensagem:
 		label_mensagem.visible = false
 		
-	# Ativa a árvore de animação
 	if anim_tree:
 		anim_tree.active = true
-		# Começa no estado Idle
 		if state_machine:
 			state_machine.travel("idle")
 			
-	# Atualiza visual inicial
 	atualizar_visual_arma()
 	atualizar_hud()
 
 func _physics_process(delta):
-	# REGENERAÇÃO DE VIDA (1% a cada 5 segundos)
 	if vida_atual < vida_maxima and vida_atual > 0:
 		tempo_regeneracao += delta
 		if tempo_regeneracao >= 5.0:
@@ -97,16 +85,13 @@ func _physics_process(delta):
 	else:
 		tempo_regeneracao = 0.0
 
-	# 1. Gravidade
 	if not is_on_floor():
 		velocity.y -= gravidade * delta
 
-	# 2. Rotação (Tank Controls)
 	var input_giro = Input.get_axis("girar_dir", "girar_esq")
 	if input_giro != 0:
 		rotate_y(input_giro * velocidade_rotacao * delta)
 
-	# 3. Movimento
 	var input_movimento = Input.get_axis("frente", "tras")
 	var direcao = transform.basis.z * input_movimento
 	
@@ -122,18 +107,13 @@ func _physics_process(delta):
 	if usar_mira_mouse:
 		atualizar_mira()
 	else:
-		# Se desligar a mira do mouse, alinha a arma com o corpo do player
 		raycast.global_rotation = global_rotation
 	
-	# 4. Combate
 	var esta_atirando = gerenciar_tiro()
 	
-	# Atualiza o tempo da animação de tiro
 	if tempo_animacao_tiro > 0:
 		tempo_animacao_tiro -= delta
 	
-	# 5. Atualizar Animações de Movimento
-	# Só muda se não estiver atirando E a animação de tiro terminou
 	if state_machine and not esta_atirando and tempo_animacao_tiro <= 0:
 		var estado_atual = state_machine.get_current_node()
 		
@@ -153,7 +133,6 @@ func atualizar_mira():
 	if not camera: return
 
 	var mouse_pos = get_viewport().get_mouse_position()
-	# Cria um plano na altura da arma para calcular onde o mouse está no mundo 3D
 	var plano = Plane(Vector3.UP, raycast.global_position.y)
 	
 	var origem = camera.project_ray_origin(mouse_pos)
@@ -162,15 +141,12 @@ func atualizar_mira():
 	var ponto_mira = plano.intersects_ray(origem, normal)
 	
 	if ponto_mira:
-		# Vetor direção ignorando altura para verificação de ângulo (frente vs trás)
-		var dir_player = -global_transform.basis.z # Frente do player (Godot usa -Z como forward)
+		var dir_player = -global_transform.basis.z
 		var dir_mira = (ponto_mira - global_position).normalized()
 		
-		# Produto escalar: > 0 significa que está no hemisfério da frente (180 graus de visão)
 		if dir_player.dot(dir_mira) > 0:
 			raycast.look_at(ponto_mira, Vector3.UP)
 		else:
-			# Se tentar mirar para trás, mantém a arma apontada para frente
 			raycast.global_rotation = global_rotation
 
 func aplicar_assistencia_mira():
@@ -179,33 +155,38 @@ func aplicar_assistencia_mira():
 	var alvo = null
 	
 	for inimigo in inimigos:
-		# Verifica se o inimigo é válido e está vivo (caso tenha a propriedade vida > 0)
+		
 		if not is_instance_valid(inimigo): continue
 		
-		# Verifica a propriedade 'vida' se existir, ou 'vida_atual' (mutante)
+		if not inimigo.visible: continue
+		
 		var vida_ok = true
 		if "vida" in inimigo and inimigo.vida <= 0: vida_ok = false
 		if "vida_atual" in inimigo and inimigo.vida_atual <= 0: vida_ok = false
 		if not vida_ok: continue
 		
+		var alvo_pos = inimigo.global_position + Vector3(0, 1.2, 0)
+		var space_state = get_world_3d().direct_space_state
+		var query = PhysicsRayQueryParameters3D.create(raycast.global_position, alvo_pos)
+		query.exclude = [self]
+		var result = space_state.intersect_ray(query)
+		if result and result.has("collider"):
+			var col = result["collider"]
+			if col != inimigo and col.get_parent() != inimigo:
+				continue
+		
 		var dist = global_position.distance_to(inimigo.global_position)
-		if dist < menor_distancia and dist < 30.0: # Alcance máximo do aim assist
+		if dist < menor_distancia and dist < 30.0: 
 			menor_distancia = dist
 			alvo = inimigo
 			
 	if alvo:
-		# Mira no "peito" do inimigo (altura aproximada)
 		var alvo_pos = alvo.global_position + Vector3(0, 1.2, 0)
 		
-		# Vira o player para o inimigo (opcional, como pedido "player vira")
-		# Rotaciona apenas no eixo Y para não inclinar o personagem
 		var alvo_flat = Vector3(alvo_pos.x, global_position.y, alvo_pos.z)
 		look_at(alvo_flat, Vector3.UP)
-		
-		# Vira a arma exatamente para o ponto
-		raycast.look_at(alvo_pos, Vector3.UP)
 
-# --- COMBATE ---
+		raycast.look_at(alvo_pos, Vector3.UP)
 
 func recarregar():
 	var arma_nome = inventario[arma_atual_index]
@@ -220,11 +201,9 @@ func recarregar():
 	if reserva <= 0:
 		print("Sem munição de reserva!")
 		return
-	
-	# Quanto falta para encher o pente
+
 	var falta = capacidade - qtd_atual
 	
-	# Recarrega o quanto der (minimo entre o que falta e o que tem na reserva)
 	var recarga = min(falta, reserva)
 	
 	municao_no_pente[arma_nome] += recarga
@@ -243,12 +222,10 @@ func trocar_arma():
 	atualizar_hud()
 
 func atualizar_visual_arma():
-	# 1. Esconde TODAS as armas
 	if vis_pistola: vis_pistola.visible = false
 	if vis_smg: vis_smg.visible = false
 	if vis_shotgun: vis_shotgun.visible = false
 	
-	# 2. Mostra a correta
 	var arma_nome = inventario[arma_atual_index]
 	print("Atualizando visual para: ", arma_nome)
 	match arma_nome:
@@ -292,30 +269,24 @@ func gerenciar_tiro():
 	return false
 
 func atirar(nome, stats):
-	# Toca animação (mantido do seu código original)
 	if state_machine:
 		state_machine.travel("Shoot")
 		tempo_animacao_tiro = 0.4
 	
-	# Verifica se arrastou a cena da bala no Inspector
 	if not bala_cena:
 		print("ERRO: Esqueceu de colocar a cena da bala no Inspector!")
 		return
 
 	var nova_bala = bala_cena.instantiate()
 	
-	# Passa informações para a bala
 	nova_bala.tipo_arma = nome
 	nova_bala.dano = stats["dano"] if nome != "Shotgun" else stats["dano_base"]
-	
-	# Adiciona na cena principal
+
 	get_parent().add_child(nova_bala)
-	
-	# Copia só posição e rotação
+
 	nova_bala.global_position = raycast.global_position
 	nova_bala.global_rotation = raycast.global_rotation
 
-# --- VIDA E COLETA ---
 
 func receber_dano(quantidade):
 	vida_atual -= quantidade
@@ -348,7 +319,6 @@ func mostrar_mensagem_coleta(texto):
 		label_mensagem.text = texto
 		label_mensagem.visible = true
 		
-		# Cria um timer temporário para esconder a mensagem
 		await get_tree().create_timer(3.0).timeout
 		if label_mensagem:
 			label_mensagem.visible = false

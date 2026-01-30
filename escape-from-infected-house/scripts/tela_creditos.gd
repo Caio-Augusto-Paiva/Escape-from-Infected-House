@@ -1,14 +1,11 @@
 extends Control
 
 @onready var texto = $TextoRolante
-var velocidade = 50.0 # Pixels por segundo
+var velocidade = 50.0 
 
 func _process(delta):
-	# Faz o texto subir
 	texto.position.y -= velocidade * delta
-	
-	# Se o texto sumir lá no topo, volta pro menu
-	# O "-texto.size.y" é a altura total do texto
+
 	if texto.position.y < -texto.size.y - 50:
 		voltar_menu()
 

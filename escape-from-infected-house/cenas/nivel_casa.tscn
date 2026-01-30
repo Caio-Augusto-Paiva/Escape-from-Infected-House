@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://kw1gjgfi56b4"]
+[gd_scene load_steps=29 format=3 uid="uid://kw1gjgfi56b4"]
 
 [ext_resource type="Script" uid="uid://b8ll2lpc5tn3j" path="res://scripts/nivel_casa.gd" id="1_ufdyn"]
 [ext_resource type="Script" uid="uid://c8ld8yndvfdon" path="res://scripts/troca_camera.gd" id="1_y2j4s"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b1526cgvjviqw" path="res://cenas/mutante.tscn" id="7_r6nfi"]
 [ext_resource type="PackedScene" uid="uid://clbdl2iowka0l" path="res://cenas/caixa_municao.tscn" id="8_0oo2q"]
 [ext_resource type="AudioStream" uid="uid://b4lywolnjk2id" path="res://Audio/SCP-x4x.mp3" id="11_27raq"]
-[ext_resource type="PackedScene" uid="uid://c1lqqr1f5hgiq" path="res://cenas/spawn.tscn" id="13_6ee8i"]
 
 [sub_resource type="Environment" id="Environment_jiefh"]
 
@@ -459,28 +458,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.177137, 3.8186402, -9.6815
 text = "Saída"
 font_size = 100
 
-[node name="CenaSpawn" parent="." instance=ExtResource("13_6ee8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.587687, 0.33579922, -7.491478)
-visible = false
-
 [node name="zombies" type="Node3D" parent="."]
 
 [node name="Zumbi(SMG)3" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -7.041669, 0.41394246, 11.769731)
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -6.0674276, 0.41394246, 11.504782)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 dropar_municao = true
 tipo_municao_drop = "SMG"
 
 [node name="Zumbi(SMG)2" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -8.033448, 0.41394246, 10.815824)
-campo_visao_angulo = 100.0
-alcance_visao = 10.0
-dropar_municao = true
-tipo_municao_drop = "SMG"
-
-[node name="Zumbi(SMG)" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -19.23582, 0.41394246, -1.0206718)
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -8.033448, 0.41394246, 11.435588)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 dropar_municao = true
@@ -494,6 +482,30 @@ dropar_municao = true
 tipo_municao_drop = "Shotgun"
 quantidade_municao_drop = 2
 
+[node name="Zumbi(shotgun)7" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.1337743, 0.41394246, 4.855625)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(shotgun)8" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.1337743, 0.41394246, 6.5799685)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(shotgun)9" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -7.0573473, 0.41394246, 6.5799685)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
 [node name="Zumbi(shotgun)2" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -2.4910984, 0.41394246, 3.665545)
 campo_visao_angulo = 100.0
@@ -505,7 +517,7 @@ quantidade_municao_drop = 2
 [node name="Zumbi(shotgun)4" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.5421953, 0.41394246, 15.633272)
 campo_visao_angulo = 100.0
-alcance_visao = 10.0
+alcance_visao = 15.0
 dropar_municao = true
 tipo_municao_drop = "Shotgun"
 quantidade_municao_drop = 2
@@ -513,7 +525,7 @@ quantidade_municao_drop = 2
 [node name="Zumbi(shotgun)5" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.5421953, 0.41394246, 16.831514)
 campo_visao_angulo = 100.0
-alcance_visao = 10.0
+alcance_visao = 15.0
 dropar_municao = true
 tipo_municao_drop = "Shotgun"
 quantidade_municao_drop = 2
@@ -521,15 +533,7 @@ quantidade_municao_drop = 2
 [node name="Zumbi(shotgun)6" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.8658056, 0.41394246, 16.831514)
 campo_visao_angulo = 100.0
-alcance_visao = 10.0
-dropar_municao = true
-tipo_municao_drop = "Shotgun"
-quantidade_municao_drop = 2
-
-[node name="Zumbi(shotgun)" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17.81588, 0.41394246, -1.2462946)
-campo_visao_angulo = 100.0
-alcance_visao = 10.0
+alcance_visao = 15.0
 dropar_municao = true
 tipo_municao_drop = "Shotgun"
 quantidade_municao_drop = 2
@@ -542,14 +546,14 @@ dropar_municao = true
 quantidade_municao_drop = 5
 
 [node name="Zumbi(pistol)6" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -4.0398197, 0.41394246, 10.956888)
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -4.0398197, 0.41394246, 11.452736)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 dropar_municao = true
 quantidade_municao_drop = 5
 
 [node name="Zumbi(pistol)5" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -10.232225, 0.41394246, 10.956888)
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -10.232225, 0.41394246, 11.467846)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 dropar_municao = true
@@ -583,15 +587,75 @@ alcance_visao = 10.0
 dropar_municao = true
 quantidade_municao_drop = 5
 
-[node name="Zumbi(pistol)9" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.8501208, 0.41394246, 11.22337)
+[node name="Zumbi(pistol)14" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.6413057, 0.41394246, 8.890586)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 dropar_municao = true
-quantidade_municao_drop = 5
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
 
-[node name="Zumbi(pistol)" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.550552, 0.41394246, -1.0206718)
+[node name="Zumbi(pistol)15" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 4.6213255, 0.41394246, 8.890586)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)18" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 4.6213255, 0.41394246, -2.1063051)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)19" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 1.7749629, 0.41394246, -2.1063051)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)20" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.090175524, 0, -0.17851715, 0, 0.2, 0, 0.17851715, 0, -0.090175524, -1.7325969, 0.41394246, -2.1063051)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)21" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 0.057462215, 0.41394246, -3.8940058)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)22" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.15781681, 0, -0.12285705, 0, 0.2, 0, 0.12285705, 0, -0.15781681, -2.3179421, 0.41394246, -3.8940058)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)16" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 4.6213255, 0.41394246, 10.691846)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)17" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 5.428482, 0.41394246, 6.5238504)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(pistol)9" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.8501208, 0.41394246, 11.22337)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 dropar_municao = true
@@ -643,22 +707,190 @@ alcance_visao = 10.0
 [node name="Zumbi(normal)7" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -2.504818, 0.41394246, 14.38837)
 campo_visao_angulo = 100.0
+alcance_visao = 20.0
+
+[node name="Zumbi(normal)11" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -4.661829, 0.41394246, 14.38837)
+campo_visao_angulo = 100.0
 alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)12" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -17.624268, 0.41394246, 14.38837)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)23" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -9.067965, 0.41394246, 11.502011)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)27" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -16.260954, 0.41394246, 10.624733)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)28" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -17.418304, 0.41394246, 9.429184)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)29" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -14.226262, 0.41394246, 9.429184)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)30" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -14.226262, 0.41394246, 7.712285)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)31" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -16.907776, 0.41394246, 7.712285)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)32" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -16.907776, 0.41394246, 5.4288883)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)33" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -15.015342, 0.41394246, 5.4288883)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)34" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -15.015342, 0.41394246, 3.529889)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)24" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -6.954976, 0.41394246, 11.502011)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)25" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -5.00839, 0.41394246, 11.502011)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)26" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -2.534031, 0.41394246, 11.502011)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)13" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -13.096048, 0.41394246, 17.34825)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)14" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -14.297556, 0.41394246, 14.38837)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)15" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -8.564679, 0.41394246, 17.281994)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)16" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -13.253839, 0.41394246, 16.663315)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)17" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -9.211676, 0.41394246, 16.483356)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+dropar_municao = true
+tipo_municao_drop = "SMG"
+is_horde_zombie = true
+
+[node name="Zumbi(normal)18" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -10.799337, 0.41394246, 15.614791)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)19" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -9.116787, 0.41394246, 14.38837)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)20" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -6.5306973, 0.41394246, 14.38837)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)21" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -4.5101137, 0.41394246, 15.858241)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
+
+[node name="Zumbi(normal)22" parent="zombies" instance=ExtResource("3_fwkce")]
+transform = Transform3D(2.3849762e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, 2.3849762e-09, -4.011898, 0.41394246, 17.410322)
+campo_visao_angulo = 100.0
+alcance_visao = 10.0
+is_horde_zombie = true
 
 [node name="Zumbi(normal)8" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -2.504818, 0.41394246, 15.4178915)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
+quantidade_municao_drop = 20
 
 [node name="Zumbi(normal)9" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -2.504818, 0.41394246, 16.637203)
 campo_visao_angulo = 100.0
-alcance_visao = 10.0
+alcance_visao = 20.0
 
 [node name="Zumbi(normal)10" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -2.504818, 0.41394246, 17.889132)
 campo_visao_angulo = 100.0
-alcance_visao = 10.0
+alcance_visao = 20.0
 
 [node name="Zumbi(normal)5" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.9620736, 0.41394246, 4.362572)
@@ -667,11 +899,6 @@ alcance_visao = 10.0
 
 [node name="Zumbi(normal)6" parent="zombies" instance=ExtResource("3_fwkce")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.248128, 0.41394246, 5.792061)
-campo_visao_angulo = 100.0
-alcance_visao = 10.0
-
-[node name="Zumbi(normal)" parent="zombies" instance=ExtResource("3_fwkce")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -12.96319, 0.41394246, -1.0206718)
 campo_visao_angulo = 100.0
 alcance_visao = 10.0
 
