@@ -2,6 +2,7 @@ extends Node3D
 
 # --- CONFIGURAÇÕES DE SPAWN ---
 @export var cena_zumbi: PackedScene = preload("res://cenas/zumbi.tscn")
+@export var spawn_ativo: bool = false # Define se o spawner começa ligado ou desligado
 @export var quantidade_inicial: int = 3
 @export var quantidade_maxima: int = 10
 @export var usar_spawn_contínuo: bool = true
@@ -22,17 +23,19 @@ var zumbis_vivos: Array = []
 var tempo_proximo_spawn: float = 0.0
 
 func _ready():
+	add_to_group("Spawners")
 	# Verifica se a área foi definida para evitar erros
 	if not area_spawn:
 		push_warning("ATENÇÃO: 'area_spawn' não foi definida no Spawner de Zumbis!")
 	
-	for i in range(quantidade_inicial):
-		spawn_zumbi()
+	if spawn_ativo:
+		for i in range(quantidade_inicial):
+			spawn_zumbi()
 
 func _physics_process(delta):
 	zumbis_vivos = zumbis_vivos.filter(func(z): return is_instance_valid(z))
 	
-	if usar_spawn_contínuo and zumbis_vivos.size() < quantidade_maxima:
+	if spawn_ativo and usar_spawn_contínuo and zumbis_vivos.size() < quantidade_maxima:
 		tempo_proximo_spawn -= delta
 		if tempo_proximo_spawn <= 0:
 			spawn_zumbi()
@@ -56,6 +59,14 @@ func spawn_zumbi():
 	
 	add_child(novo_zumbi)
 	zumbis_vivos.append(novo_zumbi)
+
+func ativar_modo_horda():
+	print("MODO HORDA ATIVADO! CORRA!")
+	spawn_ativo = true
+	quantidade_maxima = 50  # Limite maior
+	tempo_spawn = 0.5       # Spawna muito rápido (2 por segundo)
+	usar_spawn_contínuo = true
+	tempo_proximo_spawn = 0 # Começa agora
 
 # Função auxiliar para calcular ponto dentro da BoxShape
 func obter_posicao_aleatoria() -> Vector3:

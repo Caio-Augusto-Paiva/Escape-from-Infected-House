@@ -39,6 +39,9 @@ func _on_mutante_morreu():
 	print("O Boss morreu! Porta de saída destrancada!")
 	pode_sair = true
 	
+	# Ativa o MODO HORDA em todos os spawners da fase
+	get_tree().call_group("Spawners", "ativar_modo_horda")
+	
 	# Muda a cor da porta para Branco Metálico
 	if porta_saida:
 		var material = StandardMaterial3D.new()
@@ -62,3 +65,11 @@ func ganhar_jogo():
 	# Espera 3 segundos e troca para os créditos
 	await get_tree().create_timer(5.0).timeout
 	get_tree().change_scene_to_file("res://cenas/tela_creditos.tscn")
+
+func _input(event):
+	if event.is_action_pressed("mutar_musica"):
+		var musica = $MusicaFundo
+		if musica:
+			# Se estiver tocando, pausa. Se não, despausa.
+			musica.stream_paused = not musica.stream_paused
+			print("Musica:", "Despausada" if not musica.stream_paused else "Pausada")

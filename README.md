@@ -39,3 +39,5 @@ https://opengameart.org/node/81246 -zumbi
 
 # Imagens 
 Gemini AI - Tela (inicial creditos e game over)
+
+run/main_scene="uid://ckh34t8w2spw7"

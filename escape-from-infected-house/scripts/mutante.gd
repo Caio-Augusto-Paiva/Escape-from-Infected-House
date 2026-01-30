@@ -30,6 +30,9 @@ var esta_dormindo = true
 signal mutante_morreu
 
 func _ready():
+	add_to_group("Inimigos")
+	# Configura vida baseada na dificuldade
+	vida_maxima = Global.get_mutante_vida()
 	vida_atual = vida_maxima
 	player = get_tree().root.find_child("Player", true, false)
 	
@@ -142,7 +145,7 @@ func receber_dano(quantidade, posicao_impacto = Vector3.ZERO):
 		var fator_peso = 0.05 
 		empurrao_knockback = direcao_empurrao * quantidade * fator_peso
 	
-	if vida_atual < (vida_maxima / 2) and not esta_em_furia:
+	if vida_atual < (vida_maxima / 2.0) and not esta_em_furia:
 		entrar_em_furia()
 	
 	if vida_atual <= 0:
